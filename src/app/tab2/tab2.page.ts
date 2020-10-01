@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {GradeEntry} from "../shared/GradeEntry";
+import {GRADE_MOCKS} from "../shared/gradeEntryMockData";
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  currentGrades: GradeEntry[];
 
   constructor() {}
 
+  ngOnInit(){
+    this.getCurrentGrades();
+  }
+
+  private getCurrentGrades(): void {
+    this.currentGrades = GRADE_MOCKS;
+  }
 }
