@@ -1,18 +1,6 @@
 export class GradeEntry {
-  course: string;
-  grade: number;
-  credits: number;
-  semester: string;
-
-  constructor(
-    course?: string,
-    grade?: number,
-    credits?: number,
-    semester?: string
-  ) {
-    this.course = course;
-    this.grade = grade;
-    this.credits = credits;
-    this.semester = semester;
-  }
+  course: string = '';
+  grade: number = 5.0;
+  credits: number = 0;
+  semester?: string; // optional, because not needed in the calculation
 }

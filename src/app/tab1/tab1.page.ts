@@ -1,8 +1,8 @@
 import {Component} from "@angular/core";
 import {GradeEntry} from "../shared/GradeEntry";
-import {GRADE_MOCKS} from "../shared/gradeEntryMockData";
 import {IonRouterOutlet, ModalController} from "@ionic/angular";
 import {CreateEditModalComponent} from "../create-edit-modal/create-edit-modal.component";
+import {GradeService} from "../shared/grade.service";
 
 @Component({
     selector: "app-tab1",
@@ -13,29 +13,30 @@ export class Tab1Page {
     currentGPA: number;
     currentGrades: GradeEntry[];
 
-
     constructor(public modalController: ModalController,
-                private routerOutlet: IonRouterOutlet) {}
+                private routerOutlet: IonRouterOutlet,
+                private gradeService: GradeService) {
+    }
 
     ngOnInit() {
-        this.calculateGPA();
         this.getCurrentGrades();
+        this.calculateGPA();
     }
 
     private calculateGPA() {
-        const grades = GRADE_MOCKS;
-        let gradeSum = 0,
-            ectsSum = 0;
-
-        grades.forEach((grade) => {
-            gradeSum += grade.grade * grade.credits;
-            ectsSum += grade.credits;
-        });
-        this.currentGPA = gradeSum / ectsSum;
+        if (this.currentGrades) {
+            let gradeSum = 0,
+                ectsSum = 0;
+            this.currentGrades.forEach((grade) => {
+                gradeSum += grade.grade * grade.credits;
+                ectsSum += grade.credits;
+            });
+            this.currentGPA = gradeSum / ectsSum;
+        }
     }
 
     private getCurrentGrades(): void {
-        this.currentGrades = GRADE_MOCKS;
+        this.currentGrades = this.gradeService.getGradeList();
     }
 
     async presentModal() {
@@ -44,17 +45,12 @@ export class Tab1Page {
             swipeToClose: true,
             presentingElement: this.routerOutlet.nativeEl
         });
-
+        modal.onDidDismiss().then((content) => {
+            if(content.data.gradeEntry) {
+                this.currentGrades.push(content.data.gradeEntry);
+                this.gradeService.updateGradeList(content.data.gradeEntry);
+            }
+        });
         return await modal.present();
-    }
-
-    private addGrade(
-        course: string,
-        grade: number,
-        ects: number,
-        semester: string
-    ): void {
-        let gradeEntry = new GradeEntry(course, grade, ects, semester);
-        this.currentGrades.push(gradeEntry);
     }
 }

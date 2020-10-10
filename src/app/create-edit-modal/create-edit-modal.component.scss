@@ -3,6 +3,11 @@
   margin-bottom: auto;
 }
 
-ion-item:last-of-type {
+.input-container {
   margin-bottom: 1em;
+}
+
+ion-text {
+  color: var(--ion-color-danger);
+  font-size: 0.7rem;
 }

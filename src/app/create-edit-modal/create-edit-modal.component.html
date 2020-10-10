@@ -1,24 +1,53 @@
 <div class="container">
     <form [formGroup]="createEditForm" (ngSubmit)="onSubmit()">
-      <ion-item>
-        <ion-label position="floating">Course</ion-label>
-        <ion-input type="text" formControlName="course" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Semester</ion-label>
-        <ion-input type="text" formControlName="semester" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Grade</ion-label>
-        <ion-input type="number" formControlName="grade" min=1.0 max=5.0 inputmode="decimal" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Credits (ECTS)</ion-label>
-        <ion-input type="number" formControlName="credits" min=1 max=10 required></ion-input>
-      </ion-item>
-      <div class="d-flex justify-content-center">
-        <ion-button type="submit" [disabled]="!createEditForm.valid">Add Grade</ion-button>
-        <ion-button (click)="dismiss()">Cancel</ion-button>
-      </div>
+        <div class="input-container">
+            <ion-item>
+                <ion-label position="floating">Course</ion-label>
+                <ion-input type="text" formControlName="course"></ion-input>
+            </ion-item>
+            <ion-text *ngIf="course?.errors?.minlength && course?.dirty">
+                Course must be at least 2 characters long.
+            </ion-text>
+            <ion-text *ngIf="course?.errors?.required && course?.dirty">
+                Course is required.
+            </ion-text>
+            <ion-item>
+                <ion-label position="floating">Semester</ion-label>
+                <ion-input type="text" formControlName="semester"></ion-input>
+            </ion-item>
+            <ion-text *ngIf="semester?.errors?.min && semester?.dirty">
+                Semester must be at least 1.
+            </ion-text>
+            <ion-item>
+                <ion-label position="floating">Grade</ion-label>
+                <ion-input type="number" formControlName="grade" min=1.0 max=5.0 inputmode="decimal"></ion-input>
+            </ion-item>
+            <ion-text *ngIf="grade?.errors?.required && grade?.dirty">
+                Grade is required.
+            </ion-text>
+            <ion-text *ngIf="(grade?.errors?.min || grade?.errors?.max) && grade?.dirty">
+                Grade has to be between 1.0 and 5.0.
+            </ion-text>
+            <ion-item>
+                <ion-label position="floating">Credits (ECTS)</ion-label>
+                <ion-input type="number" formControlName="credits" min=1 max=10></ion-input>
+            </ion-item>
+            <ion-text *ngIf="credits?.errors?.required && credits?.dirty">
+                Credits are required.
+            </ion-text>
+            <ion-text *ngIf="credits?.errors?.min && credits?.dirty">
+                Credits must be at least 1.
+            </ion-text>
+        </div>
+        <div class="d-flex justify-content-center">
+            <ion-button type="submit" [disabled]="!createEditForm.valid">
+                <ion-icon name="checkmark"></ion-icon>
+                Save
+            </ion-button>
+            <ion-button (click)="dismiss()">
+                <ion-icon name="close-outline"></ion-icon>
+                Cancel
+            </ion-button>
+        </div>
     </form>
 </div>
