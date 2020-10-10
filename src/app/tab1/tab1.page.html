@@ -10,21 +10,20 @@
 <ion-content [fullscreen]="true">
 
     <div class="container">
-        <ion-card class="text-center">
-            <ion-card-header>
-                <ion-card-title>Your current GPA</ion-card-title>
-            </ion-card-header>
+        <ion-card class="text-center gpa-card">
             <ion-card-content>
-                <ion-text color="primary"><h1>{{this.currentGPA | number:'1.1'}}</h1></ion-text>
+                <h1>
+                    Your current GPA: <span class="gpa">{{this.currentGPA | number:'1.1'}}</span>
+                </h1>
             </ion-card-content>
         </ion-card>
-        <div>
-            <ion-card-header class="ion-text-center">
-                <ion-button color="primary" (click)="showCreateGradePopover($event)">
-                    <ion-icon name="add-outline"></ion-icon>
-                    New Grade
-                </ion-button>
-            </ion-card-header>
+        <div class="text-center">
+            <ion-button color="primary" (click)="presentModal()">
+                <ion-icon name="add-outline"></ion-icon>
+                New Grade
+            </ion-button>
+        </div>
+        <div class="grade-card-container">
             <app-grade-card *ngFor="let gradeEntry of currentGrades" [gradeEntry]="gradeEntry"></app-grade-card>
         </div>
     </div>

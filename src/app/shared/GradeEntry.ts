@@ -1,18 +1,18 @@
 export class GradeEntry {
   course: string;
   grade: number;
-  ectsPoints: number;
+  credits: number;
   semester: string;
 
   constructor(
-    course: string,
-    grade: number,
-    ectsPoints: number,
-    semester: string
+    course?: string,
+    grade?: number,
+    credits?: number,
+    semester?: string
   ) {
     this.course = course;
     this.grade = grade;
-    this.ectsPoints = ectsPoints;
+    this.credits = credits;
     this.semester = semester;
   }
 }

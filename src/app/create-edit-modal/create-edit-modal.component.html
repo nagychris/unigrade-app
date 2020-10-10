@@ -1,0 +1,24 @@
+<div class="container">
+    <form [formGroup]="createEditForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Course</ion-label>
+        <ion-input type="text" formControlName="course" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Semester</ion-label>
+        <ion-input type="text" formControlName="semester" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Grade</ion-label>
+        <ion-input type="number" formControlName="grade" min=1.0 max=5.0 inputmode="decimal" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Credits (ECTS)</ion-label>
+        <ion-input type="number" formControlName="credits" min=1 max=10 required></ion-input>
+      </ion-item>
+      <div class="d-flex justify-content-center">
+        <ion-button type="submit" [disabled]="!createEditForm.valid">Add Grade</ion-button>
+        <ion-button (click)="dismiss()">Cancel</ion-button>
+      </div>
+    </form>
+</div>

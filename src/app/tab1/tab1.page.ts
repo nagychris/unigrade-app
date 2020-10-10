@@ -13,6 +13,7 @@ export class Tab1Page {
     currentGPA: number;
     currentGrades: GradeEntry[];
 
+
     constructor(public modalController: ModalController) {}
 
     ngOnInit() {
@@ -26,8 +27,8 @@ export class Tab1Page {
             ectsSum = 0;
 
         grades.forEach((grade) => {
-            gradeSum += grade.grade * grade.ectsPoints;
-            ectsSum += grade.ectsPoints;
+            gradeSum += grade.grade * grade.credits;
+            ectsSum += grade.credits;
         });
         this.currentGPA = gradeSum / ectsSum;
     }
@@ -38,9 +39,9 @@ export class Tab1Page {
 
     async presentModal() {
         const modal = await this.modalController.create({
-            component: CreateEditModalComponent,
-            cssClass: 'create-edit-modal-content'
+            component: CreateEditModalComponent
         });
+
         return await modal.present();
     }
 
