@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {GradeEntry} from "../shared/GradeEntry";
 import {GRADE_MOCKS} from "../shared/gradeEntryMockData";
-import {ModalController} from "@ionic/angular";
+import {IonRouterOutlet, ModalController} from "@ionic/angular";
 import {CreateEditModalComponent} from "../create-edit-modal/create-edit-modal.component";
 
 @Component({
@@ -14,7 +14,8 @@ export class Tab1Page {
     currentGrades: GradeEntry[];
 
 
-    constructor(public modalController: ModalController) {}
+    constructor(public modalController: ModalController,
+                private routerOutlet: IonRouterOutlet) {}
 
     ngOnInit() {
         this.calculateGPA();
@@ -39,7 +40,9 @@ export class Tab1Page {
 
     async presentModal() {
         const modal = await this.modalController.create({
-            component: CreateEditModalComponent
+            component: CreateEditModalComponent,
+            swipeToClose: true,
+            presentingElement: this.routerOutlet.nativeEl
         });
 
         return await modal.present();
