@@ -1,16 +1,12 @@
 <ion-card>
-    <ion-card-header>
-        <div class="d-flex justify-content-between">
-            <div>
-                <ion-badge class="text-white mr-2">{{this.gradeEntry.credits}} ECTS</ion-badge>
-                <ion-badge class="text-white">{{this.gradeEntry.semester}}</ion-badge>
-            </div>
-            <ion-icon name="ellipsis-horizontal"></ion-icon>
-        </div>
+    <ion-card-header class="d-flex justify-content-between">
         <ion-card-title>{{this.gradeEntry.course}}</ion-card-title>
+        <ion-icon name="ellipsis-horizontal"></ion-icon>
     </ion-card-header>
 
     <ion-card-content>
-        <ion-chip>{{this.gradeEntry.grade | number:'1.1'}}</ion-chip>
+        <ion-chip color="warning">{{this.gradeEntry.grade | number:'1.1'}}</ion-chip>
+        <ion-chip color="medium">{{this.gradeEntry.semester}}</ion-chip>
+        <ion-chip color="medium">{{this.gradeEntry.credits}} ECTS</ion-chip>
     </ion-card-content>
 </ion-card>

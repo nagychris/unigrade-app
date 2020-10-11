@@ -53,7 +53,7 @@ export class CreateEditModalComponent implements OnInit {
         });
     }
 
-    dismiss() {
+    cancel() {
         this.modalCtrl.dismiss({
             'dismissed': true,
         });
