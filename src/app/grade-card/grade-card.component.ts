@@ -1,16 +1,46 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GradeEntry} from "../shared/GradeEntry";
+import {ActionSheetController} from "@ionic/angular";
 
 @Component({
-  selector: 'app-grade-card',
-  templateUrl: './grade-card.component.html',
-  styleUrls: ['./grade-card.component.scss'],
+    selector: 'app-grade-card',
+    templateUrl: './grade-card.component.html',
+    styleUrls: ['./grade-card.component.scss'],
 })
 export class GradeCardComponent implements OnInit {
-  @Input() gradeEntry: GradeEntry;
+    @Input() gradeEntry: GradeEntry;
 
-  constructor() { }
+    @Output()
+    editClicked: EventEmitter<GradeEntry> = new EventEmitter<GradeEntry>();
+    @Output()
+    deleteClicked: EventEmitter<GradeEntry> = new EventEmitter<GradeEntry>();
 
-  ngOnInit() {}
+    constructor(public actionSheetCtrl: ActionSheetController) {
+    }
 
+    ngOnInit() {
+    }
+
+    async presentActionSheet() {
+        const actionSheet = await this.actionSheetCtrl.create({
+            header: this.gradeEntry.course,
+            cssClass: 'grade-action-sheet',
+            buttons: [{
+                text: 'Edit',
+                handler: () => {
+                    this.editClicked.emit(this.gradeEntry);
+                }
+            }, {
+                text: 'Delete',
+                role: 'destructive',
+                handler: () => {
+                    this.deleteClicked.emit(this.gradeEntry);
+                }
+            }, {
+                text: 'Cancel',
+                role: 'cancel'
+            }]
+        });
+        await actionSheet.present();
+    }
 }

@@ -4,6 +4,11 @@
   font-size: 1rem;
 }
 
-.gpa {
+.gpa, .credits {
   color: var(--ion-color-primary);
+}
+
+ion-text.current-numbers {
+  font-weight: normal;
+  font-size: 1.3rem;
 }

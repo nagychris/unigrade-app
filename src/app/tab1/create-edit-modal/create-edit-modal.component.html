@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="createEditForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="createEditForm" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
         <div class="input-container">
             <ion-item>
                 <ion-label position="floating">Course</ion-label>

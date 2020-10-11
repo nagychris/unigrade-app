@@ -14,13 +14,38 @@ export class GradeService {
         return JSON.parse(localStorage.getItem(this.GRADE_LIST));
     }
 
-    public updateGradeList(gradeEntry: GradeEntry) {
-        let data: GradeEntry[] = this.getGradeList();
-        if (!data) {
-            data = [];
+    private setGradeList(gradeList: GradeEntry[]) {
+        localStorage.setItem(this.GRADE_LIST, JSON.stringify(gradeList));
+    }
+
+    public addGrade(gradeEntry: GradeEntry) {
+        let gradeList: GradeEntry[] = this.getGradeList();
+        if (!gradeList) {
+            gradeList = [];
         }
-        data.push(gradeEntry);
-        localStorage.setItem(this.GRADE_LIST, JSON.stringify(data));
+        gradeEntry.id = gradeList.length + 1;
+        gradeList.push(gradeEntry);
+        this.setGradeList(gradeList);
+    }
+
+    public updateGrade(gradeEntry: GradeEntry) {
+        let gradeList: GradeEntry[] = this.getGradeList();
+        gradeList.forEach((entry, index) => {
+            if (entry.id === gradeEntry.id) {
+                gradeList.splice(index, 1, gradeEntry);
+            }
+        });
+        this.setGradeList(gradeList);
+    }
+
+    public removeGrade(gradeEntry: GradeEntry) {
+        let gradeList: GradeEntry[] = this.getGradeList();
+        gradeList.forEach((entry, index) => {
+            if (entry.id === gradeEntry.id) {
+                gradeList.splice(index,1);
+            }
+        });
+        this.setGradeList(gradeList);
     }
 
 }

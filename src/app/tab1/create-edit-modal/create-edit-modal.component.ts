@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {GradeEntry} from "../shared/GradeEntry";
+import {GradeEntry} from "../../shared/GradeEntry";
 
 @Component({
     selector: 'app-create-edit-modal',
@@ -17,7 +17,7 @@ export class CreateEditModalComponent implements OnInit {
     }
 
     ngOnInit() {
-        if(this.gradeEntry === undefined || !this.gradeEntry) {
+        if(this.gradeEntry === undefined || !this.gradeEntry) { // new gradeEntry --> init form
             this.gradeEntry = {
                 course: '',
                 semester: '',
@@ -49,7 +49,8 @@ export class CreateEditModalComponent implements OnInit {
     onSubmit() {
         this.modalCtrl.dismiss({
             'dismissed': true,
-            'gradeEntry': this.createEditForm.getRawValue()
+            'gradeEntry': this.createEditForm.getRawValue(),
+            'id': this.gradeEntry.id
         });
     }
 

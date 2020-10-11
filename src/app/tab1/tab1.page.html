@@ -12,19 +12,23 @@
     <div class="container">
         <ion-card class="text-center gpa-card">
             <ion-card-content>
-                <h1>
-                    Your current GPA: <span class="gpa">{{this.currentGPA | number:'1.1'}}</span>
-                </h1>
+                <ion-text class="current-numbers">
+                    Your current GPA: <span class="gpa">{{this.currentGPA | number:'1.1-1'}}</span><br>
+                    <hr>
+                    Total earned Credits: <span class="credits">{{this.totalEcts}}</span>
+                </ion-text>
             </ion-card-content>
         </ion-card>
         <div class="text-center">
-            <ion-button color="primary" (click)="presentModal()">
+            <ion-button color="primary" (click)="presentCreateEditModal()">
                 <ion-icon name="add-outline"></ion-icon>
                 New Grade
             </ion-button>
         </div>
         <div class="grade-card-container">
-            <app-grade-card *ngFor="let gradeEntry of currentGrades" [gradeEntry]="gradeEntry"></app-grade-card>
+            <app-grade-card *ngFor="let gradeEntry of currentGrades" [gradeEntry]="gradeEntry"
+                            (editClicked)="presentCreateEditModal(gradeEntry)"
+                            (deleteClicked)="presentAlertDelete(gradeEntry)"></app-grade-card>
         </div>
     </div>
 
