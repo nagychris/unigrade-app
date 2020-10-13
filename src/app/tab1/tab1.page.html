@@ -4,6 +4,12 @@
             <ion-icon name="school" color="primary" class="mr-2"></ion-icon>
             UniGrade
         </ion-title>
+        <ion-buttons slot="primary">
+            <ion-button color="primary" (click)="presentCreateEditModal()">
+                <ion-icon name="add-outline"></ion-icon>
+                New Grade
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -19,17 +25,17 @@
                 </ion-text>
             </ion-card-content>
         </ion-card>
-        <div class="text-center">
-            <ion-button color="primary" (click)="presentCreateEditModal()">
-                <ion-icon name="add-outline"></ion-icon>
-                New Grade
-            </ion-button>
-        </div>
-        <div class="grade-card-container">
-            <app-grade-card *ngFor="let gradeEntry of currentGrades" [gradeEntry]="gradeEntry"
-                            (editClicked)="presentCreateEditModal(gradeEntry)"
-                            (deleteClicked)="presentAlertDelete(gradeEntry)"></app-grade-card>
-        </div>
+        <ion-toolbar>
+            <ion-searchbar showCancelButton="focus" inputmode="text" [(ngModel)]="searchTerm"
+                           (ionChange)="getFilteredGrades()"></ion-searchbar>
+        </ion-toolbar>
+        <ion-grid class="grade-card-container">
+            <ion-row>
+                <app-grade-card *ngFor="let gradeEntry of currentGrades" [gradeEntry]="gradeEntry"
+                                (editClicked)="presentCreateEditModal(gradeEntry)"
+                                (deleteClicked)="presentAlertDelete(gradeEntry)"></app-grade-card>
+            </ion-row>
+        </ion-grid>
     </div>
 
 </ion-content>

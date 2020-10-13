@@ -48,4 +48,11 @@ export class GradeService {
         this.setGradeList(gradeList);
     }
 
+    public filterItems(searchTerm) {
+        const grades = this.getGradeList();
+        return grades.filter(grade => {
+            return grade.course.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        })
+    }
+
 }

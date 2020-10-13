@@ -10,6 +10,7 @@ import {GradeService} from "../shared/grade.service";
     styleUrls: ["tab1.page.scss"],
 })
 export class Tab1Page {
+    public searchTerm: string = "";
     totalEcts: number;
     currentGPA: number;
     currentGrades: GradeEntry[];
@@ -43,6 +44,10 @@ export class Tab1Page {
 
     private getCurrentGrades(): void {
         this.currentGrades = this.gradeService.getGradeList();
+    }
+
+    getFilteredGrades() {
+        this.currentGrades = this.gradeService.filterItems(this.searchTerm);
     }
 
     private updateState(): void {
@@ -107,4 +112,6 @@ export class Tab1Page {
         });
         toast.present();
     }
+
+
 }

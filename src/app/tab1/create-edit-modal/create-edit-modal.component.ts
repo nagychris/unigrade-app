@@ -21,7 +21,7 @@ export class CreateEditModalComponent implements OnInit {
             this.gradeEntry = {
                 course: '',
                 semester: '',
-                grade: 5.0,
+                grade: 0,
                 credits: 0
             }
         }

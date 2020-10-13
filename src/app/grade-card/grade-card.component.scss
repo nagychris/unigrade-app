@@ -1,8 +1,22 @@
 ion-card-title {
   font-weight: normal;
+  max-width: 350px;
 }
 
 ion-chip.grade {
   color: var(--ion-color-yellow);
   background: var(--ion-color-yellow-shade);
+}
+
+ion-icon[name="ellipsis-horizontal"] {
+  padding: 0 0 7px 7px;
+}
+
+ion-icon[name="ellipsis-horizontal"]:hover {
+  cursor: pointer;
+}
+
+ion-card {
+  min-width: 320px;
+  margin: 7px;
 }

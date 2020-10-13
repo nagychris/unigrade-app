@@ -1,4 +1,5 @@
-<ion-card>
+<ion-col class="ion-no-padding" size="12">
+    <ion-card>
         <ion-card-header class="d-flex justify-content-between">
             <ion-card-title>{{this.gradeEntry.course}}</ion-card-title>
             <ion-icon (click)="presentActionSheet()" name="ellipsis-horizontal" title="Show actions"></ion-icon>
@@ -9,4 +10,5 @@
             <ion-chip color="medium" outline="true">{{this.gradeEntry.semester}}</ion-chip>
             <ion-chip color="medium" outline="true">{{this.gradeEntry.credits}} Credits</ion-chip>
         </ion-card-content>
-</ion-card>
+    </ion-card>
+</ion-col>

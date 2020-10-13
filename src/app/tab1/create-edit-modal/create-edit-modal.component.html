@@ -2,24 +2,24 @@
     <form [formGroup]="createEditForm" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
         <div class="input-container">
             <ion-item>
-                <ion-label position="floating">Course</ion-label>
+                <ion-label position="stacked">Course name</ion-label>
                 <ion-input type="text" formControlName="course"></ion-input>
             </ion-item>
             <ion-text *ngIf="course?.errors?.minlength && course?.dirty">
-                Course must be at least 2 characters long.
+                Course name must be at least 2 characters long.
             </ion-text>
             <ion-text *ngIf="course?.errors?.required && course?.dirty">
-                Course is required.
+                Course name is required.
             </ion-text>
             <ion-item>
-                <ion-label position="floating">Semester</ion-label>
-                <ion-input type="text" formControlName="semester"></ion-input>
+                <ion-label position="stacked">Semester</ion-label>
+                <ion-input type="text" formControlName="semester" placeholder="e.g. SS 20"></ion-input>
             </ion-item>
             <ion-text *ngIf="semester?.errors?.min && semester?.dirty">
                 Semester must be at least 1.
             </ion-text>
             <ion-item>
-                <ion-label position="floating">Grade</ion-label>
+                <ion-label position="stacked">Grade</ion-label>
                 <ion-input type="number" formControlName="grade" min=1.0 max=5.0 inputmode="decimal"></ion-input>
             </ion-item>
             <ion-text *ngIf="grade?.errors?.required && grade?.dirty">
@@ -29,7 +29,7 @@
                 Grade has to be between 1.0 and 5.0.
             </ion-text>
             <ion-item>
-                <ion-label position="floating">Credits (ECTS)</ion-label>
+                <ion-label position="stacked">Credits (ECTS)</ion-label>
                 <ion-input type="number" formControlName="credits" min=1 max=10></ion-input>
             </ion-item>
             <ion-text *ngIf="credits?.errors?.required && credits?.dirty">

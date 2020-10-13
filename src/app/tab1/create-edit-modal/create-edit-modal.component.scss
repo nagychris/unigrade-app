@@ -11,3 +11,7 @@ ion-text {
   color: var(--ion-color-danger);
   font-size: 0.7rem;
 }
+
+ion-button [type="submit"] {
+  margin-right: 10px;
+}
