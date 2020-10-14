@@ -74,7 +74,7 @@ export class Tab1Page {
                     } else { // edit existing gradeEntry
                         entry.id = content.data.id;
                         this.gradeService.updateGrade(entry);
-                        this.presentToastWithMsg('Course updated successfully.')
+                        this.presentToastWithMsg('Grade updated successfully.')
                         this.updateState();
                     }
                 }
@@ -95,7 +95,7 @@ export class Tab1Page {
                     text: 'Yes, please',
                     handler: () => {
                         this.gradeService.removeGrade(gradeEntry);
-                        this.presentToastWithMsg('Course has been deleted successfully.');
+                        this.presentToastWithMsg('Grade has been deleted successfully.');
                         this.updateState();
                     }
                 }
