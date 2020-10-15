@@ -11,8 +11,8 @@ import {GradeService} from "../shared/grade.service";
 })
 export class Tab1Page {
     public searchTerm: string = "";
-    totalEcts: number;
-    currentGPA: number;
+    totalEcts: number = 0;
+    currentGPA: number = 0.0;
     currentGrades: GradeEntry[];
 
     constructor(public modalController: ModalController,
@@ -27,7 +27,7 @@ export class Tab1Page {
     }
 
     private calculateNumbers() {
-        if (this.currentGrades.length > 0) {
+        if (this.currentGrades.length) {
             let gradeSum = 0,
                 ectsSum = 0;
             this.currentGrades.forEach((grade) => {
@@ -36,9 +36,6 @@ export class Tab1Page {
             });
             this.totalEcts = ectsSum;
             this.currentGPA = gradeSum / ectsSum;
-        } else {
-            this.currentGPA = 0.0;
-            this.totalEcts = 0;
         }
     }
 
@@ -70,11 +67,12 @@ export class Tab1Page {
                 if (entry) {
                     if (!content.data.id) { // new gradeEntry --> add to list
                         this.gradeService.addGrade(entry);
+                        this.presentToastWithMsg('Grade created successfully.');
                         this.updateState();
                     } else { // edit existing gradeEntry
                         entry.id = content.data.id;
                         this.gradeService.updateGrade(entry);
-                        this.presentToastWithMsg('Grade updated successfully.')
+                        this.presentToastWithMsg('Grade updated successfully.');
                         this.updateState();
                     }
                 }

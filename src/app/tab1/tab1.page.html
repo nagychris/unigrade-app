@@ -7,7 +7,7 @@
         <ion-buttons slot="primary">
             <ion-button color="primary" (click)="presentCreateEditModal()">
                 <ion-icon name="add-outline"></ion-icon>
-                New Grade
+                Add Grade
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
@@ -19,7 +19,7 @@
         <ion-card class="text-center gpa-card">
             <ion-card-content>
                 <ion-text class="current-numbers">
-                    Your current GPA: <span class="gpa">{{this.currentGPA | number:'1.1-1'}}</span><br>
+                    Your current GPA: <span class="gpa">{{this.currentGPA | number:'1.1-1'}}</span>
                     <hr>
                     Total earned Credits: <span class="credits">{{this.totalEcts}}</span>
                 </ion-text>
@@ -29,13 +29,26 @@
             <ion-searchbar showCancelButton="focus" inputmode="text" [(ngModel)]="searchTerm"
                            (ionChange)="getFilteredGrades()"></ion-searchbar>
         </ion-toolbar>
-        <ion-grid class="grade-card-container">
+        <ion-grid class="grade-card-container" *ngIf="currentGrades.length">
             <ion-row>
                 <app-grade-card *ngFor="let gradeEntry of currentGrades" [gradeEntry]="gradeEntry"
                                 (editClicked)="presentCreateEditModal(gradeEntry)"
                                 (deleteClicked)="presentAlertDelete(gradeEntry)"></app-grade-card>
             </ion-row>
         </ion-grid>
+        <div *ngIf="!currentGrades.length" class="center-container ion-text-center">
+            <div>
+                <ion-text>
+                    <p>No grades yet!</p>
+                </ion-text>
+            </div>
+            <div>
+                <ion-button color="primary" (click)="presentCreateEditModal()">
+                    <ion-icon name="add-outline"></ion-icon>
+                    Add Grade
+                </ion-button>
+            </div>
+        </div>
     </div>
 
 </ion-content>
