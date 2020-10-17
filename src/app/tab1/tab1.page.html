@@ -28,17 +28,17 @@
             </ion-card-content>
         </ion-card>
         <ion-toolbar>
-            <ion-searchbar showCancelButton="focus" inputmode="text" [(ngModel)]="searchTerm"
+            <ion-searchbar *ngIf="currentGrades" showCancelButton="focus" inputmode="text" [(ngModel)]="searchTerm"
                            (ionChange)="getFilteredGrades()"></ion-searchbar>
         </ion-toolbar>
-        <ion-grid class="grade-card-container" *ngIf="currentGrades.length">
+        <ion-grid class="grade-card-container" *ngIf="currentGrades?.length">
             <ion-row>
                 <app-grade-card *ngFor="let gradeEntry of currentGrades" [gradeEntry]="gradeEntry"
                                 (editClicked)="presentCreateEditModal(gradeEntry)"
                                 (deleteClicked)="presentAlertDelete(gradeEntry)"></app-grade-card>
             </ion-row>
         </ion-grid>
-        <div *ngIf="!currentGrades.length" class="center-container ion-text-center">
+        <div *ngIf="!currentGrades?.length" class="center-container ion-text-center">
             <div>
                 <ion-text>
                     <p>No grades yet!</p>
