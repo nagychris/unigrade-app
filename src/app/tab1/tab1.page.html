@@ -5,9 +5,11 @@
             UniGrade
         </ion-title>
         <ion-buttons slot="primary">
-            <ion-button color="primary" (click)="presentCreateEditModal()">
-                <ion-icon name="add-outline"></ion-icon>
-                Add Grade
+            <ion-button color="primary" title="Add grade" (click)="presentCreateEditModal()">
+                <ion-icon name="add-outline" ></ion-icon>
+            </ion-button>
+            <ion-button color="primary" title="Export as CSV" (click)="exportGradesAsCsv()">
+                <ion-icon name="share-outline"></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
@@ -44,8 +46,13 @@
             </div>
             <div>
                 <ion-button color="primary" (click)="presentCreateEditModal()">
-                    <ion-icon name="add-outline"></ion-icon>
-                    Add Grade
+                    <ion-icon name="add-outline" class="ion-padding-end"></ion-icon>
+                    Add grade
+                </ion-button>
+                <p class="ion-margin-vertical">or</p>
+                <ion-button color="primary">
+                    <ion-icon name="download-outline" class="ion-padding-end"></ion-icon>
+                    Import CSV
                 </ion-button>
             </div>
         </div>

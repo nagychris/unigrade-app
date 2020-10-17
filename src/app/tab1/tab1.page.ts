@@ -3,6 +3,7 @@ import {GradeEntry} from "../shared/GradeEntry";
 import {AlertController, IonRouterOutlet, ModalController, ToastController} from "@ionic/angular";
 import {CreateEditModalComponent} from "./create-edit-modal/create-edit-modal.component";
 import {GradeService} from "../shared/grade.service";
+import {DataService} from "../shared/data.service";
 
 @Component({
     selector: "app-tab1",
@@ -19,7 +20,8 @@ export class Tab1Page {
                 private routerOutlet: IonRouterOutlet,
                 private gradeService: GradeService,
                 public alertCtrl: AlertController,
-                public toastCtrl: ToastController) {
+                public toastCtrl: ToastController,
+                private dataService: DataService) {
     }
 
     ngOnInit() {
@@ -79,6 +81,25 @@ export class Tab1Page {
             }
         });
         return await modal.present();
+    }
+
+    // TODO: implement this
+    async presentExportModal() {
+        const modal = await this.modalController.create({
+            component: CreateEditModalComponent,
+            swipeToClose: true,
+            presentingElement: this.routerOutlet.nativeEl
+        });
+        modal.onDidDismiss().then((content) => {
+            if (content.role !== 'backdrop' && content.role !== 'gesture') { // ignore dismissing via exit-button or swiping
+                // TODO
+            }
+        });
+        return await modal.present();
+    }
+
+    public exportGradesAsCsv(fileName?: string) {
+        this.dataService.downloadCsv(this.currentGrades, fileName);
     }
 
     async presentAlertDelete(gradeEntry: GradeEntry) {
