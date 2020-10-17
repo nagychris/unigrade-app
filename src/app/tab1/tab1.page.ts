@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {GradeEntry} from "../shared/GradeEntry";
 import {AlertController, IonRouterOutlet, ModalController, ToastController} from "@ionic/angular";
 import {CreateEditModalComponent} from "./create-edit-modal/create-edit-modal.component";
@@ -9,7 +9,7 @@ import {GradeService} from "../shared/grade.service";
     templateUrl: "tab1.page.html",
     styleUrls: ["tab1.page.scss"],
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit{
     public searchTerm: string = "";
     totalEcts: number = 0;
     currentGPA: number = 0.0;
@@ -27,7 +27,7 @@ export class Tab1Page {
     }
 
     private calculateNumbers() {
-        if (this.currentGrades.length) {
+        if (this.currentGrades) {
             let gradeSum = 0,
                 ectsSum = 0;
             this.currentGrades.forEach((grade) => {
