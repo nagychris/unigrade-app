@@ -27,6 +27,7 @@
     "angular-rename": "^1.0.7",
     "bootstrap": "^4.5.2",
     "file-saver": "^2.0.2",
+    "ngx-csv-parser": "0.0.6",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

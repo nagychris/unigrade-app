@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
       },
       {
+        path: 'create-edit',
+        loadChildren: () => import('../create-edit/create-edit.module').then(m => m.CreateEditModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

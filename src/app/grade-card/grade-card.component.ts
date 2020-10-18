@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {GradeEntry} from "../shared/GradeEntry";
+import {GradeEntry} from "../services/GradeEntry";
 import {ActionSheetController} from "@ionic/angular";
 
 @Component({

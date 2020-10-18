@@ -10,15 +10,20 @@ export class GradeService {
     constructor() {
     }
 
-    public getGradeList() {
+    public getGradeById(id: number): GradeEntry {
+        const grades = this.getGradeList();
+        return grades.find(entry => entry.id == id);
+    }
+
+    public getGradeList(): GradeEntry[] {
         return JSON.parse(localStorage.getItem(this.GRADE_LIST));
     }
 
-    private setGradeList(gradeList: GradeEntry[]) {
+    public setGradeList(gradeList: GradeEntry[]): void {
         localStorage.setItem(this.GRADE_LIST, JSON.stringify(gradeList));
     }
 
-    public addGrade(gradeEntry: GradeEntry) {
+    public addGrade(gradeEntry: GradeEntry): void {
         let gradeList: GradeEntry[] = this.getGradeList();
         if (!gradeList) {
             gradeList = [];
@@ -28,7 +33,7 @@ export class GradeService {
         this.setGradeList(gradeList);
     }
 
-    public updateGrade(gradeEntry: GradeEntry) {
+    public updateGrade(gradeEntry: GradeEntry): void {
         let gradeList: GradeEntry[] = this.getGradeList();
         gradeList.forEach((entry, index) => {
             if (entry.id === gradeEntry.id) {
@@ -38,7 +43,7 @@ export class GradeService {
         this.setGradeList(gradeList);
     }
 
-    public removeGrade(gradeEntry: GradeEntry) {
+    public removeGrade(gradeEntry: GradeEntry): void {
         let gradeList: GradeEntry[] = this.getGradeList();
         gradeList.forEach((entry, index) => {
             if (entry.id === gradeEntry.id) {
