@@ -7,11 +7,11 @@ import {AlertService} from "../services/alert.service";
 import {Router} from "@angular/router";
 
 @Component({
-    selector: "app-tab1",
-    templateUrl: "tab1.page.html",
-    styleUrls: ["tab1.page.scss"],
+    selector: "app-home",
+    templateUrl: "home.page.html",
+    styleUrls: ["home.page.scss"],
 })
-export class Tab1Page implements OnInit {
+export class HomePage implements OnInit {
     public searchTerm: string = "";
     totalEcts: number = 0;
     currentGPA: number = 0.0;
@@ -63,26 +63,11 @@ export class Tab1Page implements OnInit {
         this.router.navigate(['tabs/create-edit', gradeEntry.id]);
     }
 
-    // TODO: extract to service
-    async presentAlertDelete(gradeEntry: GradeEntry) {
-        const alert = await this.alertCtrl.create({
-            header: 'Delete grade',
-            message: 'Do you really want to remove the grade of "' + gradeEntry.course + '"?',
-            buttons: [
-                {
-                    text: 'No, thanks',
-                    role: 'cancel'
-                }, {
-                    text: 'Yes, please',
-                    handler: () => {
-                        this.gradeService.removeGrade(gradeEntry);
-                        this.calculateNumbers();
-                        this.alertService.presentToastWithMsg('Grade has been deleted successfully.');
-                    }
-                }
-            ]
+    public deleteGrade(gradeEntry: GradeEntry) {
+        this.alertService.presentAlertDelete(gradeEntry, (gradeEntry) => {
+            this.gradeService.removeGrade(gradeEntry);
+            this.calculateNumbers();
         });
-        await alert.present();
     }
 
 }

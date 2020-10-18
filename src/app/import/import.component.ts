@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DataService} from "../services/data.service";
 import {GradeService} from "../services/grade.service";
+import {AlertService} from "../services/alert.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-import',
@@ -8,30 +10,31 @@ import {GradeService} from "../services/grade.service";
   styleUrls: ['./import.component.scss'],
 })
 export class ImportComponent implements OnInit {
-  @Output() importEmitter = new EventEmitter<boolean>();
+  file: File;
 
   constructor(private dataService: DataService,
               private gradeService: GradeService,
+              private alertService: AlertService,
+              private router: Router
               ) { }
 
   ngOnInit() {}
 
   public loadFile(event) {
-    const file = event.target.files[0];
-    if (file) {
-      this.dataService.parseCsv(file).subscribe(result => {
-        console.log(result);
+    this.file = event.target.files[0];
+  }
+
+  public importGrades() {
+    if (this.file) {
+      this.dataService.parseCsv(this.file).subscribe(result => {
         this.gradeService.setGradeList(result);
-        this.importEmitter.emit(true);
+        this.router.navigate(['tabs/home']);
+        this.alertService.presentToastWithMsg('Data imported successfully.');
+      }, error => {
+        this.alertService.presentToastWithMsg('Error while loading file: ' + error, 'danger');
       });
-      //
-      //     if (grades) {
-      //         this.gradeService.setGradeList(grades as GradeEntry[]);
-      //         this.presentToastWithMsg('Grades imported successfully.');
-      //     }
-      // } else {
-      //     this.presentToastWithMsg('Failed to load CSV file! Make sure you chose the right format.',
-      //         'danger');
+    } else {
+      this.alertService.presentToastWithMsg('Error: No file to import!', 'danger');
     }
   }
 

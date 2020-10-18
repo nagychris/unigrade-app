@@ -32,7 +32,7 @@
             <ion-row>
                 <app-grade-card *ngFor="let gradeEntry of currentGrades" [gradeEntry]="gradeEntry"
                                 (editClicked)="onNavigate(gradeEntry)"
-                                (deleteClicked)="presentAlertDelete(gradeEntry)"></app-grade-card>
+                                (deleteClicked)="deleteGrade(gradeEntry)"></app-grade-card>
             </ion-row>
         </ion-grid>
         <div *ngIf="!currentGrades?.length" class="center-container ion-text-center">
@@ -42,11 +42,10 @@
                 </ion-text>
             </div>
             <div>
-                <ion-button color="primary" (click)="onNavigate()">
+                <ion-button color="primary"  [routerLink]="['../../create-edit']">
                     <ion-icon name="add-outline"></ion-icon>
                     Add grade
                 </ion-button>
-                <app-import (importEmitter)="calculateNumbers()"></app-import>
             </div>
         </div>
     </div>
