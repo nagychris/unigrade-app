@@ -19,24 +19,29 @@ export class AlertService {
     toast.present();
   }
 
-  async presentAlertDelete(gradeEntry: GradeEntry, callback: Function) {
+  async presentConfirmationAlert(message: string): Promise<boolean> {
+    let resolveFunction: (confirm: boolean) => void;
+    let promise = new Promise<boolean>(resolve => {
+      resolveFunction = resolve;
+    });
+
     const alert = await this.alertController.create({
-      header: 'Delete grade',
-      message: 'Do you really want to remove the grade of ' + gradeEntry.course + '?',
+      header: 'Confirmation',
+      message: message,
       buttons: [
         {
-          text: 'Cancel',
-          role: 'cancel'
+          text: 'No',
+          role: 'cancel',
+          handler: () => { resolveFunction(false); }
         }, {
           text: 'Yes',
-          handler: () => {
-            callback();
-            this.presentToastWithMsg('Grade has been deleted successfully.');
-          }
+          handler: () => { resolveFunction(true); }
         }
       ]
     });
-    await alert.present();
+    alert.present();
+
+    return promise;
   }
 
 }

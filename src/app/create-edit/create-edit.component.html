@@ -1,5 +1,5 @@
-<div class="container">
-    <form [formGroup]="createEditForm" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
+<div class="center-container container">
+    <form [formGroup]="createEditForm" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()" (keyup.escape)="cancel()">
         <div class="input-container">
             <ion-item>
                 <ion-label position="stacked">Course name</ion-label>
@@ -39,14 +39,10 @@
                 Credits must be at least 1.
             </ion-text>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="ion-text-center ion-margin-top">
             <ion-button type="submit" [disabled]="!createEditForm.valid">
                 <ion-icon name="checkmark"></ion-icon>
                 Save
-            </ion-button>
-            <ion-button (click)="cancel()">
-                <ion-icon name="close-outline"></ion-icon>
-                Cancel
             </ion-button>
         </div>
     </form>

@@ -3,12 +3,13 @@ import {saveAs} from 'file-saver';
 import {NgxCsvParser, NgxCSVParserError} from 'ngx-csv-parser';
 import {GradeEntry} from "./GradeEntry";
 import {map} from "rxjs/operators";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
 export class DataService {
+    private importGradesSource = new Subject<any>();
 
     constructor(private csvParser: NgxCsvParser) {
     }
@@ -42,5 +43,16 @@ export class DataService {
     public parseCsv(file: File): Observable<Array<GradeEntry>> {
          return this.csvParser.parse(file, {header: true, delimiter: ','})
             .pipe(map(result => result as Array<GradeEntry>));
+    }
+
+    public setImportedGrades(grades: GradeEntry[], keepGrades: boolean) {
+        this.importGradesSource.next({
+            grades: grades,
+            keepGrades: keepGrades
+        });
+    }
+
+    public getImportedGrades() {
+        return this.importGradesSource.asObservable();
     }
 }

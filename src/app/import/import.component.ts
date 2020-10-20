@@ -11,9 +11,9 @@ import {Router} from "@angular/router";
 })
 export class ImportComponent implements OnInit {
   file: File;
+  keepGrades: boolean = true;
 
   constructor(private dataService: DataService,
-              private gradeService: GradeService,
               private alertService: AlertService,
               private router: Router
               ) { }
@@ -26,10 +26,9 @@ export class ImportComponent implements OnInit {
 
   public importGrades() {
     if (this.file) {
-      this.dataService.parseCsv(this.file).subscribe(result => {
-        this.gradeService.setGradeList(result);
+      this.dataService.parseCsv(this.file).subscribe(resultGrades => {
+        this.dataService.setImportedGrades(resultGrades, this.keepGrades);
         this.router.navigate(['tabs/home']);
-        this.alertService.presentToastWithMsg('Data imported successfully.');
       }, error => {
         this.alertService.presentToastWithMsg('Error while loading file: ' + error, 'danger');
       });

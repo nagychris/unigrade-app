@@ -5,7 +5,7 @@
                 <input type="file" (change)="loadFile($event)" accept="text/csv">
             </ion-item>
             <ion-item>
-                <ion-checkbox color="primary" slot="start"></ion-checkbox>
+                <ion-checkbox color="primary" slot="start" [(ngModel)]="keepGrades"></ion-checkbox>
                 <ion-label>Keep existing grades</ion-label>
             </ion-item>
             <div class="ion-text-center ion-margin-top">

@@ -68,7 +68,7 @@ export class CreateEditComponent implements OnInit {
             message = 'Grade updated successfully.';
         }
         this.alertService.presentToastWithMsg(message);
-        this.router.navigate(['tabs/tab1']);
+        this.router.navigate(['tabs/home']);
     }
 
     cancel() {
