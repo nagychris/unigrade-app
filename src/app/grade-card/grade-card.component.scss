@@ -1,6 +1,5 @@
 ion-card-title {
   font-weight: normal;
-  max-width: 350px;
 }
 
 ion-chip.grade {
@@ -16,7 +15,8 @@ ion-icon[name="ellipsis-horizontal"]:hover {
   cursor: pointer;
 }
 
-ion-card {
-  min-width: 320px;
-  margin: 7px;
+@media screen and (max-width: 767px) {
+  ion-card {
+    max-width: 100%;
+  }
 }

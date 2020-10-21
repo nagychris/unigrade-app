@@ -59,16 +59,21 @@ export class CreateEditComponent implements OnInit {
     }
 
     onSubmit() {
-        let message: string;
-        if (!this.id) { // new gradeEntry --> add to list
-            this.gradeService.addGrade(this.createEditForm.getRawValue());
-            message = 'Grade created successfully.'
-        } else { // edit existing gradeEntry
-            this.gradeService.updateGrade(this.createEditForm.getRawValue());
-            message = 'Grade updated successfully.';
+        if (!this.createEditForm.valid) {
+            this.alertService.presentToastWithMsg('Please fill in all required fields first.', 'danger');
+        } else {
+            let message: string;
+            if (!this.id) { // new gradeEntry --> add to list
+                this.gradeService.addGrade(this.createEditForm.getRawValue());
+                message = 'Grade created successfully.';
+            } else { // edit existing gradeEntry
+                this.gradeService.updateGrade(this.createEditForm.getRawValue(), this.id);
+                message = 'Grade updated successfully.';
+            }
+            this.router.navigate(['tabs/home']).then(() => {
+                this.alertService.presentToastWithMsg(message);
+            });
         }
-        this.alertService.presentToastWithMsg(message);
-        this.router.navigate(['tabs/home']);
     }
 
     cancel() {

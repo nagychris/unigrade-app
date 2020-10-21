@@ -4,11 +4,6 @@
             <ion-icon name="school" color="primary" class="mr-2"></ion-icon>
             UniGrade
         </ion-title>
-        <ion-buttons slot="primary">
-            <ion-button *ngIf="currentGrades?.length" color="primary" title="Export as CSV" (click)="exportGradesAsCsv()">
-                <ion-icon name="download-outline"></ion-icon>
-            </ion-button>
-        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -24,15 +19,24 @@
                 </ion-text>
             </ion-card-content>
         </ion-card>
-        <ion-toolbar>
-            <ion-searchbar *ngIf="currentGrades?.length" showCancelButton="focus" inputmode="text" [(ngModel)]="searchTerm"
+        <ion-toolbar *ngIf="currentGrades?.length" >
+            <ion-searchbar showCancelButton="focus" inputmode="text"
+                           [(ngModel)]="searchTerm"
                            (ionChange)="getFilteredGrades()"></ion-searchbar>
+            <ion-buttons slot="end">
+                <ion-button color="primary" title="Export as CSV"
+                            (click)="exportGradesAsCsv()">
+                    <ion-icon name="download-outline"></ion-icon>
+                </ion-button>
+            </ion-buttons>
         </ion-toolbar>
         <ion-grid class="grade-card-container" *ngIf="currentGrades?.length">
             <ion-row>
-                <app-grade-card *ngFor="let gradeEntry of currentGrades" [gradeEntry]="gradeEntry"
-                                (editClicked)="onNavigate(gradeEntry)"
-                                (deleteClicked)="deleteGrade(gradeEntry)"></app-grade-card>
+                <ion-col *ngFor="let gradeEntry of currentGrades" size="12" size-md="6" size-lg="4">
+                    <app-grade-card [gradeEntry]="gradeEntry"
+                                    (editClicked)="onNavigate(gradeEntry)"
+                                    (deleteClicked)="deleteGrade(gradeEntry)"></app-grade-card>
+                </ion-col>
             </ion-row>
         </ion-grid>
         <div *ngIf="!currentGrades?.length" class="center-container ion-text-center">
@@ -42,16 +46,15 @@
                 </ion-text>
             </div>
             <div>
-                <ion-button color="primary"  [routerLink]="['../../create-edit']">
+                <ion-button color="primary" [routerLink]="['../../create-edit']">
                     <ion-icon name="add-outline"></ion-icon>
                     Add grade
                 </ion-button>
-                <ion-button color="primary"  [routerLink]="['../../import']">
+                <ion-button color="primary" [routerLink]="['../../import']">
                     <ion-icon name="push-outline"></ion-icon>
                     Import grades
                 </ion-button>
             </div>
         </div>
     </div>
-
 </ion-content>

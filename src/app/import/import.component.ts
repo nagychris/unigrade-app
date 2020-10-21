@@ -1,5 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {DataService} from "../services/data.service";
+import {Component, OnInit} from '@angular/core';
 import {GradeService} from "../services/grade.service";
 import {AlertService} from "../services/alert.service";
 import {Router} from "@angular/router";
@@ -13,10 +12,9 @@ export class ImportComponent implements OnInit {
   file: File;
   keepGrades: boolean = true;
 
-  constructor(private dataService: DataService,
-              private alertService: AlertService,
-              private router: Router
-              ) { }
+  constructor(private alertService: AlertService,
+              private router: Router,
+              private gradeService: GradeService) {}
 
   ngOnInit() {}
 
@@ -26,8 +24,9 @@ export class ImportComponent implements OnInit {
 
   public importGrades() {
     if (this.file) {
-      this.dataService.parseCsv(this.file).subscribe(resultGrades => {
-        this.dataService.setImportedGrades(resultGrades, this.keepGrades);
+      this.gradeService.parseCsv(this.file).subscribe(resultGrades => {
+        this.keepGrades ? this.gradeService.appendGrades(resultGrades)
+            : this.gradeService.setGradeList(resultGrades);
         this.router.navigate(['tabs/home']);
       }, error => {
         this.alertService.presentToastWithMsg('Error while loading file: ' + error, 'danger');

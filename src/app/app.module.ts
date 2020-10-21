@@ -10,7 +10,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AlertService} from "./services/alert.service";
 import {GradeService} from "./services/grade.service";
-import {DataService} from "./services/data.service";
 
 @NgModule({
     declarations: [AppComponent],
@@ -21,7 +20,6 @@ import {DataService} from "./services/data.service";
         SplashScreen,
         AlertService,
         GradeService,
-        DataService,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]
