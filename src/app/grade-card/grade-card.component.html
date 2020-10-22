@@ -8,7 +8,7 @@
     </ion-card-header>
 
     <ion-card-content>
-        <ion-chip color="warning">{{this.gradeEntry.grade | number:'1.1-1'}}</ion-chip>
+        <ion-chip [color]="evaluateColor()">{{this.gradeEntry.grade | number:'1.1-1'}}</ion-chip>
         <ion-chip color="medium" outline="true">{{this.gradeEntry.semester}}</ion-chip>
         <ion-chip color="medium" outline="true">{{this.gradeEntry.credits}} Credits</ion-chip>
     </ion-card-content>

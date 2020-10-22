@@ -46,4 +46,17 @@ export class GradeCardComponent implements OnInit {
         });
         await actionSheet.present();
     }
+
+    evaluateColor(): string {
+        const grade = this.gradeEntry.grade;
+        if (grade) {
+            if (grade <= 2.7) {
+                return 'success';
+            } else if (grade <= 3.7) {
+                return 'warning';
+            } else {
+                return 'danger';
+            }
+        }
+    }
 }
