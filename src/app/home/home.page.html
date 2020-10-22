@@ -58,20 +58,25 @@
 			class="center-container ion-text-center"
 		>
 			<div>
-				<ion-text>
-					<p>No grades yet!</p>
-				</ion-text>
+
 			</div>
-			<div>
-				<ion-button color="primary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
-					<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
-					Add grade
-				</ion-button><br>
-				<ion-button color="primary" [routerLink]="['../../import']">
-					<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
-					Import grades
-				</ion-button>
-			</div>
+			<ion-card>
+				<ion-card-content class="flex-column">
+					<div class="ion-margin-bottom">
+						<ion-text>
+							No grades yet!
+						</ion-text>
+					</div>
+					<ion-button color="primary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
+						<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
+						Add grade
+					</ion-button><br>
+					<ion-button color="primary" [routerLink]="['../../import']">
+						<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
+						Import grades
+					</ion-button>
+				</ion-card-content>
+			</ion-card>
 		</div>
 	</div>
 </ion-content>
