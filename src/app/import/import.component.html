@@ -1,18 +1,22 @@
 <div class="center-container container">
-    <ion-card>
-        <ion-card-content>
-            <ion-item>
-                <input type="file" (change)="loadFile($event)" accept="text/csv">
-            </ion-item>
-            <ion-item>
-                <ion-checkbox color="primary" slot="start" [(ngModel)]="keepGrades"></ion-checkbox>
-                <ion-label>Keep existing grades</ion-label>
-            </ion-item>
-            <div class="ion-text-center ion-margin-top">
-                <ion-button [disabled]="!file" (click)="importGrades()">
-                    Import
-                </ion-button>
-            </div>
-        </ion-card-content>
-    </ion-card>
+	<ion-card>
+		<ion-card-content>
+			<ion-item>
+				<input type="file" (change)="loadFile($event)" accept="text/csv" />
+			</ion-item>
+			<ion-item>
+				<ion-checkbox
+					color="primary"
+					slot="start"
+					[(ngModel)]="keepGrades"
+				></ion-checkbox>
+				<ion-label>Keep existing grades</ion-label>
+			</ion-item>
+			<div class="ion-text-center ion-margin-top">
+				<ion-button [disabled]="!file" (click)="importGrades()">
+					Import
+				</ion-button>
+			</div>
+		</ion-card-content>
+	</ion-card>
 </div>

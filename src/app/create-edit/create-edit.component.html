@@ -1,63 +1,87 @@
 <div class="center-container container">
-    <ion-card>
-        <ion-card-content>
-            <form [formGroup]="createEditForm" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()"
-                  (keyup.escape)="cancel()">
-                <div class="input-container">
-                    <ion-item>
-                        <ion-label position="stacked">Course name</ion-label>
-                        <ion-input type="text" formControlName="course"></ion-input>
-                    </ion-item>
-                    <ion-text *ngIf="course?.errors?.minlength && course?.dirty">
-                        Course name must be at least 2 characters long.
-                    </ion-text>
-                    <ion-text *ngIf="course?.errors?.required && course?.dirty">
-                        Course name is required.
-                    </ion-text>
-                    <ion-item>
-                        <ion-label position="stacked">Semester</ion-label>
-                        <ion-input type="text" formControlName="semester" placeholder="e.g. SS 20"></ion-input>
-                    </ion-item>
-                    <ion-text *ngIf="semester?.errors?.min && semester?.dirty">
-                        Semester must be at least 1.
-                    </ion-text>
-                    <ion-item>
-                        <ion-label position="stacked">Grade</ion-label>
-                        <ion-input type="number" formControlName="grade" min=1.0 max=5.0
-                                   inputmode="decimal"></ion-input>
-                    </ion-item>
-                    <ion-text *ngIf="grade?.errors?.required && grade?.dirty">
-                        Grade is required.
-                    </ion-text>
-                    <ion-text *ngIf="(grade?.errors?.min || grade?.errors?.max) && grade?.dirty">
-                        Grade has to be between 1.0 and 5.0.
-                    </ion-text>
-                    <ion-item>
-                        <ion-label position="stacked">Credits (ECTS)</ion-label>
-                        <ion-input type="number" formControlName="credits" min=1 max=20></ion-input>
-                    </ion-item>
-                    <ion-text *ngIf="credits?.errors?.required && credits?.dirty">
-                        Credits are required.
-                    </ion-text>
-                    <ion-text *ngIf="credits?.errors?.min && credits?.dirty">
-                        Credits must be at least 1.
-                    </ion-text>
-                    <ion-item>
-                        <ion-checkbox color="primary" slot="start" formControlName="counts"></ion-checkbox>
-                        <ion-label>Included in GPA</ion-label>
-                    </ion-item>
-                </div>
-                <div class="ion-text-center ion-margin-top">
-                    <ion-button type="submit" [disabled]="!createEditForm.valid">
-                        <ion-icon name="checkmark"></ion-icon>
-                        Save
-                    </ion-button>
-                    <ion-button [routerLink]="['../../home']">
-                        <ion-icon name="close-outline"></ion-icon>
-                        Cancel
-                    </ion-button>
-                </div>
-            </form>
-        </ion-card-content>
-    </ion-card>
+	<ion-card>
+		<ion-card-content>
+			<form
+				[formGroup]="createEditForm"
+				(ngSubmit)="onSubmit()"
+				(keyup.enter)="onSubmit()"
+				(keyup.escape)="cancel()"
+			>
+				<div class="input-container">
+					<ion-item>
+						<ion-label position="stacked">Course name</ion-label>
+						<ion-input type="text" formControlName="course"></ion-input>
+					</ion-item>
+					<ion-text *ngIf="course?.errors?.minlength && course?.dirty">
+						Course name must be at least 2 characters long.
+					</ion-text>
+					<ion-text *ngIf="course?.errors?.required && course?.dirty">
+						Course name is required.
+					</ion-text>
+					<ion-item>
+						<ion-label position="stacked">Semester</ion-label>
+						<ion-input
+							type="text"
+							formControlName="semester"
+							placeholder="e.g. SS 20"
+						></ion-input>
+					</ion-item>
+					<ion-text *ngIf="semester?.errors?.min && semester?.dirty">
+						Semester must be at least 1.
+					</ion-text>
+					<ion-item>
+						<ion-label position="stacked">Grade</ion-label>
+						<ion-input
+							type="number"
+							formControlName="grade"
+							min="1.0"
+							max="5.0"
+							inputmode="decimal"
+						></ion-input>
+					</ion-item>
+					<ion-text *ngIf="grade?.errors?.required && grade?.dirty">
+						Grade is required.
+					</ion-text>
+					<ion-text
+						*ngIf="(grade?.errors?.min || grade?.errors?.max) && grade?.dirty"
+					>
+						Grade has to be between 1.0 and 5.0.
+					</ion-text>
+					<ion-item>
+						<ion-label position="stacked">Credits (ECTS)</ion-label>
+						<ion-input
+							type="number"
+							formControlName="credits"
+							min="1"
+							max="20"
+						></ion-input>
+					</ion-item>
+					<ion-text *ngIf="credits?.errors?.required && credits?.dirty">
+						Credits are required.
+					</ion-text>
+					<ion-text *ngIf="credits?.errors?.min && credits?.dirty">
+						Credits must be at least 1.
+					</ion-text>
+					<ion-item>
+						<ion-checkbox
+							color="primary"
+							slot="start"
+							formControlName="counts"
+						></ion-checkbox>
+						<ion-label>Included in GPA</ion-label>
+					</ion-item>
+				</div>
+				<div class="ion-text-center ion-margin-top">
+					<ion-button type="submit" [disabled]="!createEditForm.valid">
+						<ion-icon name="checkmark"></ion-icon>
+						Save
+					</ion-button>
+					<ion-button [routerLink]="['../../home']">
+						<ion-icon name="close-outline"></ion-icon>
+						Cancel
+					</ion-button>
+				</div>
+			</form>
+		</ion-card-content>
+	</ion-card>
 </div>

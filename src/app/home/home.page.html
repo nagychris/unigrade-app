@@ -1,57 +1,77 @@
 <ion-header [translucent]="true">
-    <ion-toolbar mode="md">
-        <ion-title color="primary" slot="start">
-            <ion-icon name="school" color="primary" class="mr-2"></ion-icon>
-            UniGrade
-        </ion-title>
-        <ion-buttons slot="end">
-            <ion-text class="gpa" >GPA: <span class="gpa">{{currentGPA | number: '1.1-1'}}</span></ion-text>
-            <ion-text class="credits">Credits: <span class="credits">{{totalEcts | number}}</span></ion-text>
-        </ion-buttons>
-    </ion-toolbar>
+	<ion-toolbar mode="md">
+		<ion-title color="primary" slot="start">
+			<ion-icon name="school" color="primary" class="mr-2"></ion-icon>
+			UniGrade
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-text class="gpa"
+				>GPA:
+				<span class="gpa">{{currentGPA | number: '1.1-1'}}</span></ion-text
+			>
+			<ion-text class="credits"
+				>Credits: <span class="credits">{{totalEcts | number}}</span></ion-text
+			>
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
 
-
 <ion-content [fullscreen]="true">
-
-    <div class="container ion-margin-top">
-        <ion-toolbar *ngIf="currentGrades?.length">
-            <ion-searchbar showCancelButton="focus" inputmode="text"
-                           [(ngModel)]="searchTerm"
-                           (ionChange)="getFilteredGrades()"></ion-searchbar>
-            <ion-buttons slot="end">
-                <ion-button color="primary" title="Export as CSV"
-                            (click)="exportGradesAsCsv()">
-                    <ion-icon name="download-outline"></ion-icon>
-                </ion-button>
-            </ion-buttons>
-        </ion-toolbar>
-        <ion-grid class="grade-card-container" *ngIf="currentGrades?.length">
-            <ion-row>
-                <ion-col *ngFor="let gradeEntry of currentGrades" size="12" size-md="6" size-lg="4">
-                    <app-grade-card [gradeEntry]="gradeEntry" [counts]="gradeEntry.counts"
-                                    (editClicked)="onNavigate(gradeEntry)"
-                                    (deleteClicked)="deleteGrade(gradeEntry)"
-                                    (countsClicked)="updateCounts(gradeEntry, $event)"></app-grade-card>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-        <div *ngIf="!currentGrades?.length" class="center-container ion-text-center">
-            <div>
-                <ion-text>
-                    <p>No grades yet!</p>
-                </ion-text>
-            </div>
-            <div>
-                <ion-button color="primary" [routerLink]="['../../create-edit']">
-                    <ion-icon name="add-outline"></ion-icon>
-                    Add grade
-                </ion-button>
-                <ion-button color="primary" [routerLink]="['../../import']">
-                    <ion-icon name="push-outline"></ion-icon>
-                    Import grades
-                </ion-button>
-            </div>
-        </div>
-    </div>
+	<div class="container ion-margin-top">
+		<ion-toolbar *ngIf="currentGrades?.length">
+			<ion-searchbar
+				showCancelButton="focus"
+				inputmode="text"
+				[(ngModel)]="searchTerm"
+				(ionChange)="getFilteredGrades()"
+			></ion-searchbar>
+			<ion-buttons slot="end">
+				<ion-button
+					color="primary"
+					title="Export as CSV"
+					(click)="exportGradesAsCsv()"
+				>
+					<ion-icon name="download-outline"></ion-icon>
+				</ion-button>
+			</ion-buttons>
+		</ion-toolbar>
+		<ion-grid class="grade-card-container" *ngIf="currentGrades?.length">
+			<ion-row>
+				<ion-col
+					*ngFor="let gradeEntry of currentGrades"
+					size="12"
+					size-md="6"
+					size-lg="4"
+				>
+					<app-grade-card
+						[gradeEntry]="gradeEntry"
+						[counts]="gradeEntry.counts"
+						(editClicked)="onNavigate(gradeEntry)"
+						(deleteClicked)="deleteGrade(gradeEntry)"
+						(countsClicked)="updateCounts(gradeEntry, $event)"
+					></app-grade-card>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		<div
+			*ngIf="!currentGrades?.length"
+			class="center-container ion-text-center"
+		>
+			<div>
+				<ion-text>
+					<p>No grades yet!</p>
+				</ion-text>
+			</div>
+			<div>
+				<ion-button color="primary" [routerLink]="['../../create-edit']">
+					<ion-icon name="add-outline"></ion-icon>
+					Add grade
+				</ion-button>
+				<ion-button color="primary" [routerLink]="['../../import']">
+					<ion-icon name="push-outline"></ion-icon>
+					Import grades
+				</ion-button>
+			</div>
+		</div>
+	</div>
 </ion-content>

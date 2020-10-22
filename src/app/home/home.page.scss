@@ -1,30 +1,32 @@
 .gpa-card {
-  color: var(--ion-color-dark);
-  font-weight: bolder;
-  font-size: 1rem;
+	color: var(--ion-color-dark);
+	font-weight: bolder;
+	font-size: 1rem;
 }
 
-span.gpa, span.credits {
-  font-weight: bolder;
-  font-size: 1rem;
-  color: var(--ion-color-primary);
+span.gpa,
+span.credits {
+	font-weight: bolder;
+	font-size: 1rem;
+	color: var(--ion-color-primary);
 }
 
-ion-text.gpa, ion-text.credits {
-  padding-right: 1rem;
+ion-text.gpa,
+ion-text.credits {
+	padding-right: 1rem;
 }
 
 ion-text.current-numbers {
-  font-weight: normal;
-  font-size: 1.3rem;
+	font-weight: normal;
+	font-size: 1.3rem;
 }
 
 .center-container {
-  margin: auto;
-  padding-top: 50px;
+	margin: auto;
+	padding-top: 50px;
 }
 
 ion-searchbar {
-  padding-left: 10px;
-  padding-right: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
