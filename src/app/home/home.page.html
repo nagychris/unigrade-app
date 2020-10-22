@@ -1,24 +1,20 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title color="primary">
+    <ion-toolbar mode="md">
+        <ion-title color="primary" slot="start">
             <ion-icon name="school" color="primary" class="mr-2"></ion-icon>
             UniGrade
         </ion-title>
+        <ion-buttons slot="end">
+            <ion-text class="gpa" >GPA: <span class="gpa">{{currentGPA | number: '1.1-1'}}</span></ion-text>
+            <ion-text class="credits">Credits: <span class="credits">{{totalEcts | number}}</span></ion-text>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
 
-    <div class="container">
-        <ion-card class="text-center gpa-card">
-            <ion-card-content>
-                <ion-text class="current-numbers">
-                    Your current GPA: <span class="gpa">{{currentGPA | number: '1.1-1'}}</span>
-                    <hr>
-                    Total earned Credits: <span class="credits">{{totalEcts | number}}</span>
-                </ion-text>
-            </ion-card-content>
-        </ion-card>
+    <div class="container ion-margin-top">
         <ion-toolbar *ngIf="currentGrades?.length">
             <ion-searchbar showCancelButton="focus" inputmode="text"
                            [(ngModel)]="searchTerm"

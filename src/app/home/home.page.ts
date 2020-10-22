@@ -79,7 +79,6 @@ export class HomePage {
     }
 
     updateCounts(gradeEntry: GradeEntry, counts: boolean) {
-        console.log(gradeEntry, counts);
         gradeEntry.counts = counts;
         this.gradeService.updateGrade(gradeEntry);
     }
