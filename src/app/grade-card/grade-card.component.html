@@ -1,6 +1,9 @@
 <ion-card class="ion-no-margin">
     <ion-card-header class="d-flex justify-content-between">
-        <ion-card-title>{{this.gradeEntry.course}}</ion-card-title>
+        <div class="d-flex">
+            <ion-checkbox color="primary" [(ngModel)]="counts" (ionChange)="countsClicked.emit(counts)" class="ion-margin-end"></ion-checkbox>
+            <ion-card-title>{{this.gradeEntry.course}}</ion-card-title>
+        </div>
         <ion-icon (click)="presentActionSheet()" name="ellipsis-horizontal" title="Show actions"></ion-icon>
     </ion-card-header>
 

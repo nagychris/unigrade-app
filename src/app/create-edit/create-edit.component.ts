@@ -34,7 +34,8 @@ export class CreateEditComponent implements OnInit {
                 course: '',
                 semester: '',
                 grade: 0,
-                credits: 0
+                credits: 0,
+                counts: true
             }
         }
 
@@ -54,7 +55,8 @@ export class CreateEditComponent implements OnInit {
             credits: [this.gradeEntry.credits, [
                 Validators.required,
                 Validators.min(1)
-            ]]
+            ]],
+            counts: [this.gradeEntry.counts]
         });
     }
 
@@ -62,12 +64,14 @@ export class CreateEditComponent implements OnInit {
         if (!this.createEditForm.valid) {
             this.alertService.presentToastWithMsg('Please fill in all required fields first.', 'danger');
         } else {
-            let message: string;
+            let message: string,
+                grade = this.createEditForm.getRawValue();
             if (!this.id) { // new gradeEntry --> add to list
-                this.gradeService.addGrade(this.createEditForm.getRawValue());
+                this.gradeService.addGrade(grade);
                 message = 'Grade created successfully.';
             } else { // edit existing gradeEntry
-                this.gradeService.updateGrade(this.createEditForm.getRawValue(), this.id);
+                grade.id = this.id;
+                this.gradeService.updateGrade(grade);
                 message = 'Grade updated successfully.';
             }
             this.router.navigate(['tabs/home']).then(() => {
@@ -87,5 +91,7 @@ export class CreateEditComponent implements OnInit {
     get grade() { return this.createEditForm.get('grade'); }
 
     get credits() { return this.createEditForm.get('credits'); }
+
+    get counts() { return this.createEditForm.get('counts'); }
 
 }

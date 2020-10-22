@@ -1,16 +1,15 @@
 import {Injectable} from "@angular/core";
 import {GradeEntry} from "./GradeEntry";
-import {Observable, Subject} from "rxjs";
 import {map} from "rxjs/operators";
 import {NgxCsvParser} from "ngx-csv-parser";
 import {saveAs} from 'file-saver';
+import {Observable} from "rxjs";
 
 @Injectable({
     providedIn: "root",
 })
 export class GradeService {
     private GRADE_LIST = 'gradeList';
-    private gradesSource = new Subject<any>();
 
     constructor(private csvParser: NgxCsvParser) {
     }
@@ -38,11 +37,10 @@ export class GradeService {
         this.setGradeList(gradeList);
     }
 
-    public updateGrade(gradeEntry: GradeEntry, id: number): void {
+    public updateGrade(gradeEntry: GradeEntry): void {
         let gradeList: GradeEntry[] = this.getGradeList();
-        gradeEntry.id = id;
         gradeList.forEach((entry, index) => {
-            if (entry.id == id) {
+            if (entry.id == gradeEntry.id) {
                 gradeList.splice(index, 1, gradeEntry);
             }
         });
@@ -101,17 +99,5 @@ export class GradeService {
     public parseCsv(file: File): Observable<Array<GradeEntry>> {
         return this.csvParser.parse(file, {header: true, delimiter: ','})
             .pipe(map(result => result as Array<GradeEntry>));
-    }
-
-    public notifyHomePage(grades: GradeEntry[], role: string, keepGrades?: boolean) {
-        this.gradesSource.next({
-            grades: grades,
-            role: role,
-            keepGrades: keepGrades
-        });
-    }
-
-    public getImportedGrades() {
-        return this.gradesSource.asObservable();
     }
 }

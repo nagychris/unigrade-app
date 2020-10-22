@@ -19,7 +19,7 @@
                 </ion-text>
             </ion-card-content>
         </ion-card>
-        <ion-toolbar *ngIf="currentGrades?.length" >
+        <ion-toolbar *ngIf="currentGrades?.length">
             <ion-searchbar showCancelButton="focus" inputmode="text"
                            [(ngModel)]="searchTerm"
                            (ionChange)="getFilteredGrades()"></ion-searchbar>
@@ -33,9 +33,10 @@
         <ion-grid class="grade-card-container" *ngIf="currentGrades?.length">
             <ion-row>
                 <ion-col *ngFor="let gradeEntry of currentGrades" size="12" size-md="6" size-lg="4">
-                    <app-grade-card [gradeEntry]="gradeEntry"
+                    <app-grade-card [gradeEntry]="gradeEntry" [counts]="gradeEntry.counts"
                                     (editClicked)="onNavigate(gradeEntry)"
-                                    (deleteClicked)="deleteGrade(gradeEntry)"></app-grade-card>
+                                    (deleteClicked)="deleteGrade(gradeEntry)"
+                                    (countsClicked)="updateCounts(gradeEntry, $event)"></app-grade-card>
                 </ion-col>
             </ion-row>
         </ion-grid>

@@ -31,13 +31,19 @@ export class HomePage {
         this.currentGrades = this.gradeService.getGradeList();
         if (this.currentGrades && this.currentGrades.length) {
             let gradeSum = 0,
-                ectsSum = 0;
+                totalEcts = 0,
+                countingEcts = 0;
             this.currentGrades.forEach((grade) => {
-                gradeSum += grade.grade * grade.credits;
-                ectsSum += +grade.credits;
+                if (grade.counts) {
+                    gradeSum += +grade.grade * +grade.credits;
+                    countingEcts += +grade.credits;
+                }
+                totalEcts += +grade.credits;
             });
-            this.totalEcts = ectsSum;
-            this.currentGPA = gradeSum / ectsSum;
+            this.totalEcts = totalEcts;
+            this.currentGPA = countingEcts
+                ? gradeSum / countingEcts
+                : 0.0;
         } else {
             this.totalEcts = 0;
             this.currentGPA = 0.0;
@@ -64,12 +70,18 @@ export class HomePage {
     public deleteGrade(gradeEntry: GradeEntry) {
         this.alertService.presentConfirmationAlert('Do you really want to remove the grade of <strong>' +
             gradeEntry.course + '</strong>?').then((confirm) => {
-                if (confirm) {
-                    this.gradeService.removeGrade(gradeEntry);
-                    this.calculateNumbers();
-                    this.alertService.presentToastWithMsg('Grade deleted successfully.');
-                }
+            if (confirm) {
+                this.gradeService.removeGrade(gradeEntry);
+                this.calculateNumbers();
+                this.alertService.presentToastWithMsg('Grade deleted successfully.');
+            }
         });
+    }
+
+    updateCounts(gradeEntry: GradeEntry, counts: boolean) {
+        console.log(gradeEntry, counts);
+        gradeEntry.counts = counts;
+        this.gradeService.updateGrade(gradeEntry);
     }
 
 }

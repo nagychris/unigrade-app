@@ -9,11 +9,14 @@ import {ActionSheetController} from "@ionic/angular";
 })
 export class GradeCardComponent implements OnInit {
     @Input() gradeEntry: GradeEntry;
+    @Input() counts: boolean;
 
     @Output()
     editClicked: EventEmitter<GradeEntry> = new EventEmitter<GradeEntry>();
     @Output()
     deleteClicked: EventEmitter<GradeEntry> = new EventEmitter<GradeEntry>();
+    @Output()
+    countsClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(public actionSheetCtrl: ActionSheetController) {
     }
