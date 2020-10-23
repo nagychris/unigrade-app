@@ -45,7 +45,7 @@ export class CreateEditComponent implements OnInit {
 				this.gradeEntry.course,
 				[Validators.required, Validators.minLength(2)],
 			],
-			semester: [this.gradeEntry.semester, [Validators.min(1)]],
+			semester: [this.gradeEntry.semester, [Validators.required]],
 			grade: [
 				this.gradeEntry.grade,
 				[Validators.required, Validators.min(1.0), Validators.max(5.0)],
@@ -78,7 +78,9 @@ export class CreateEditComponent implements OnInit {
 				message = "Grade updated successfully.";
 			}
 			this.router.navigate(["tabs/home"]).then(() => {
-				this.alertService.presentToastWithMsg(message);
+				this.alertService.presentToastWithMsg(message).then(() => {
+					this.createEditForm.reset();
+				});
 			});
 		}
 	}

@@ -10,11 +10,11 @@
 					slot="start"
 					[(ngModel)]="keepGrades"
 				></ion-checkbox>
-				<ion-label>Keep existing grades</ion-label>
+				<ion-label class="ion-text-wrap">Bestehende Noten behalten</ion-label>
 			</ion-item>
 			<div class="ion-text-center ion-margin-top">
 				<ion-button [disabled]="!file" (click)="importGrades()">
-					Import
+					Importieren
 				</ion-button>
 			</div>
 		</ion-card-content>

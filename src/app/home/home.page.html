@@ -4,13 +4,13 @@
 			<ion-icon name="school" color="primary" class="mr-2"></ion-icon>
 			UniGrade
 		</ion-title>
-		<ion-buttons slot="end">
+		<ion-buttons slot="end" *ngIf="currentGrades?.length">
 			<ion-text class="gpa"
-				>GPA:
+				>Schnitt:
 				<span class="gpa">{{currentGPA | number: '1.1-1'}}</span></ion-text
 			>
 			<ion-text class="credits"
-				>Credits: <span class="credits">{{totalEcts | number}}</span></ion-text
+				>ECTS: <span class="credits">{{totalEcts | number}}</span></ion-text
 			>
 		</ion-buttons>
 	</ion-toolbar>
@@ -63,17 +63,16 @@
 			<ion-card>
 				<ion-card-content class="flex-column">
 					<div class="ion-margin-bottom">
-						<ion-text>
-							No grades yet!
-						</ion-text>
+						<strong>Noch keine Noten vorhanden!</strong><br>
+						Füge Noten hinzu, um deinen Schnitt auszurechnen:
 					</div>
 					<ion-button color="primary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
 						<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
-						Add grade
+						Note hinzufügen
 					</ion-button><br>
 					<ion-button color="primary" [routerLink]="['../../import']">
 						<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
-						Import grades
+						Noten importieren
 					</ion-button>
 				</ion-card-content>
 			</ion-card>

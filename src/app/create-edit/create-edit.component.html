@@ -9,28 +9,28 @@
 			>
 				<div class="input-container">
 					<ion-item>
-						<ion-label position="stacked">Course name</ion-label>
+						<ion-label position="stacked">Kursname</ion-label>
 						<ion-input type="text" formControlName="course"></ion-input>
 					</ion-item>
 					<ion-text *ngIf="course?.errors?.minlength && course?.dirty">
-						Course name must be at least 2 characters long.
+						Kursname muss mindestens 2 Buchstaben enthalten.
 					</ion-text>
 					<ion-text *ngIf="course?.errors?.required && course?.dirty">
-						Course name is required.
+						Kursname ist ein Pflichtfeld.
 					</ion-text>
 					<ion-item>
 						<ion-label position="stacked">Semester</ion-label>
 						<ion-input
 							type="text"
 							formControlName="semester"
-							placeholder="e.g. SS 20"
+							placeholder="z.B. SS 20"
 						></ion-input>
 					</ion-item>
-					<ion-text *ngIf="semester?.errors?.min && semester?.dirty">
-						Semester must be at least 1.
+					<ion-text *ngIf="semester?.errors?.required && semester?.dirty">
+						Semester ist ein Pflichtfeld.
 					</ion-text>
 					<ion-item>
-						<ion-label position="stacked">Grade</ion-label>
+						<ion-label position="stacked">Note</ion-label>
 						<ion-input
 							type="number"
 							formControlName="grade"
@@ -40,15 +40,15 @@
 						></ion-input>
 					</ion-item>
 					<ion-text *ngIf="grade?.errors?.required && grade?.dirty">
-						Grade is required.
+						Note ist ein Pflichtfeld.
 					</ion-text>
 					<ion-text
 						*ngIf="(grade?.errors?.min || grade?.errors?.max) && grade?.dirty"
 					>
-						Grade has to be between 1.0 and 5.0.
+						Note muss zwischen 1.0 und 5.0 liegen.
 					</ion-text>
 					<ion-item>
-						<ion-label position="stacked">Credits (ECTS)</ion-label>
+						<ion-label position="stacked">ECTS-Punkte</ion-label>
 						<ion-input
 							type="number"
 							formControlName="credits"
@@ -57,10 +57,10 @@
 						></ion-input>
 					</ion-item>
 					<ion-text *ngIf="credits?.errors?.required && credits?.dirty">
-						Credits are required.
+						ECTS-Punkte ist ein Pflichtfeld.
 					</ion-text>
 					<ion-text *ngIf="credits?.errors?.min && credits?.dirty">
-						Credits must be at least 1.
+						ECTS-Punkte müssen mindestens 1 sein.
 					</ion-text>
 					<ion-item>
 						<ion-checkbox
@@ -68,17 +68,17 @@
 							slot="start"
 							formControlName="counts"
 						></ion-checkbox>
-						<ion-label>Included in GPA</ion-label>
+						<ion-label class="ion-text-wrap">Zählt in den Schnitt</ion-label>
 					</ion-item>
 				</div>
 				<div class="ion-text-center ion-margin-top">
 					<ion-button type="submit" [disabled]="!createEditForm.valid">
 						<ion-icon name="checkmark"></ion-icon>
-						Save
+						Speichern
 					</ion-button>
 					<ion-button [routerLink]="['../../home']">
 						<ion-icon name="close-outline"></ion-icon>
-						Cancel
+						Abbrechen
 					</ion-button>
 				</div>
 			</form>
