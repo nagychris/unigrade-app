@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { ImportComponent } from "./import.component";
 import { FormsModule } from "@angular/forms";
-import { NavbarComponent } from '../navbar/navbar.component';
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
 	imports: [
@@ -17,8 +17,9 @@ import { NavbarComponent } from '../navbar/navbar.component';
 			},
 		]),
 		FormsModule,
+		SharedModule,
 	],
-	declarations: [ImportComponent, NavbarComponent],
+	declarations: [ImportComponent],
 	providers: [],
 })
 export class ImportModule {}
