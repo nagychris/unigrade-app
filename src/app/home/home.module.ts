@@ -7,6 +7,7 @@ import { NgxCsvParserModule } from "ngx-csv-parser";
 
 import { HomePageRoutingModule } from "./home-routing.module";
 import { GradeCardComponent } from "../grade-card/grade-card.component";
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @NgModule({
 	imports: [
@@ -17,7 +18,7 @@ import { GradeCardComponent } from "../grade-card/grade-card.component";
 		ReactiveFormsModule,
 		NgxCsvParserModule,
 	],
-	declarations: [HomePage, GradeCardComponent],
+	declarations: [HomePage, GradeCardComponent, NavbarComponent],
 	providers: [],
 })
 export class HomePageModule {}

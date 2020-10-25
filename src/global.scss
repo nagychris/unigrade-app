@@ -37,6 +37,17 @@ ion-card-title {
 }
 
 .center-container {
-	margin-top: auto;
-	margin-bottom: auto;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+ion-card {
+	box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.form-card {
+	min-width: 95%;
 }

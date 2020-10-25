@@ -4,6 +4,7 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { ImportComponent } from "./import.component";
 import { FormsModule } from "@angular/forms";
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @NgModule({
 	imports: [
@@ -17,7 +18,7 @@ import { FormsModule } from "@angular/forms";
 		]),
 		FormsModule,
 	],
-	declarations: [ImportComponent],
+	declarations: [ImportComponent, NavbarComponent],
 	providers: [],
 })
 export class ImportModule {}

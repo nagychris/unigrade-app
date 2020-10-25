@@ -1,35 +1,19 @@
-<ion-header [translucent]="true">
-	<ion-toolbar mode="md">
-		<ion-title color="primary" slot="start">
-			<ion-icon name="school" color="primary" class="mr-2"></ion-icon>
-			UniGrade
-		</ion-title>
-		<ion-buttons slot="end" *ngIf="currentGrades?.length">
-			<ion-text class="gpa"
-				>Schnitt:
-				<span class="gpa">{{currentGPA | number: '1.1-1'}}</span></ion-text
-			>
-			<ion-text class="credits"
-				>ECTS: <span class="credits">{{totalEcts | number}}</span></ion-text
-			>
-		</ion-buttons>
-	</ion-toolbar>
-</ion-header>
-
+<app-navbar [currentGrades]="currentGrades" [gpa]="currentGPA" [credits]="totalEcts"></app-navbar>
 <ion-content [fullscreen]="true">
-	<div class="container ion-margin-top">
+	<div class="container ion-margin-top h-75">
 		<ion-toolbar *ngIf="currentGrades?.length">
 			<ion-searchbar
-				showCancelButton="focus"
-				inputmode="text"
-				[(ngModel)]="searchTerm"
-				(ionChange)="getFilteredGrades()"
+					showCancelButton="focus"
+					inputmode="text"
+					[(ngModel)]="searchTerm"
+					(ionChange)="getFilteredGrades()"
+					placeholder="Suchen"
 			></ion-searchbar>
 			<ion-buttons slot="end">
 				<ion-button
-					color="primary"
-					title="Export as CSV"
-					(click)="exportGradesAsCsv()"
+						color="primary"
+						title="Export as CSV"
+						(click)="exportGrades()"
 				>
 					<ion-icon name="download-outline"></ion-icon>
 				</ion-button>
@@ -38,44 +22,40 @@
 		<ion-grid class="grade-card-container" *ngIf="currentGrades?.length">
 			<ion-row>
 				<ion-col
-					*ngFor="let gradeEntry of currentGrades"
-					size="12"
-					size-md="6"
-					size-lg="4"
+						*ngFor="let gradeEntry of currentGrades"
+						size="12"
+						size-md="6"
+						size-lg="4"
 				>
 					<app-grade-card
-						[gradeEntry]="gradeEntry"
-						[counts]="gradeEntry.counts"
-						(editClicked)="onNavigate(gradeEntry)"
-						(deleteClicked)="deleteGrade(gradeEntry)"
-						(countsClicked)="updateCounts(gradeEntry, $event)"
+							[gradeEntry]="gradeEntry"
+							[counts]="gradeEntry.counts"
+							(editClicked)="onNavigate(gradeEntry)"
+							(deleteClicked)="deleteGrade(gradeEntry)"
+							(countsClicked)="updateCounts(gradeEntry, $event)"
 					></app-grade-card>
 				</ion-col>
 			</ion-row>
 		</ion-grid>
-		<div
-			*ngIf="!currentGrades?.length"
-			class="center-container ion-text-center"
-		>
-			<div>
-
-			</div>
-			<ion-card>
-				<ion-card-content class="flex-column">
-					<div class="ion-margin-bottom">
-						<strong>Noch keine Noten vorhanden!</strong><br>
-						Füge Noten hinzu, um deinen Schnitt auszurechnen:
-					</div>
-					<ion-button color="primary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
-						<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
-						Note hinzufügen
-					</ion-button><br>
-					<ion-button color="primary" [routerLink]="['../../import']">
-						<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
-						Noten importieren
-					</ion-button>
-				</ion-card-content>
-			</ion-card>
+		<div *ngIf="!currentGrades?.length"
+		class="center-container ion-text-center">
+		<ion-card>
+			<ion-card-content class="flex-column">
+				<div class="ion-margin-bottom">
+					<strong>Noch keine Noten vorhanden!</strong><br>
+					Füge Noten hinzu, um deinen Schnitt auszurechnen:
+				</div>
+				<ion-button color="primary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
+					<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
+					Note hinzufügen
+				</ion-button>
+				<br>
+				<ion-button color="primary" [routerLink]="['../../import']">
+					<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
+					Noten importieren
+				</ion-button>
+			</ion-card-content>
+		</ion-card>
 		</div>
 	</div>
 </ion-content>

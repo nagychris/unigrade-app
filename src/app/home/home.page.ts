@@ -52,7 +52,7 @@ export class HomePage {
 		this.currentGrades = this.gradeService.filterItems(this.searchTerm);
 	}
 
-	public exportGradesAsCsv(fileName?: string) {
+	exportGrades(fileName?: string) {
 		if (this.currentGrades && this.currentGrades.length) {
 			this.gradeService.downloadCsv(this.currentGrades, fileName);
 			this.alertService.presentToastWithMsg("Download started successfully.");
@@ -61,11 +61,11 @@ export class HomePage {
 		}
 	}
 
-	public onNavigate(gradeEntry?: GradeEntry) {
+	onNavigate(gradeEntry?: GradeEntry) {
 		this.router.navigate(["tabs/create-edit", gradeEntry.id]);
 	}
 
-	public deleteGrade(gradeEntry: GradeEntry) {
+	deleteGrade(gradeEntry: GradeEntry) {
 		this.alertService
 			.presentConfirmationAlert(
 				"Do you really want to remove the grade of <strong>" +
@@ -84,5 +84,6 @@ export class HomePage {
 	updateCounts(gradeEntry: GradeEntry, counts: boolean) {
 		gradeEntry.counts = counts;
 		this.gradeService.updateGrade(gradeEntry);
+		this.calculateNumbers();
 	}
 }

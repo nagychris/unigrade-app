@@ -1,5 +1,6 @@
+<app-navbar></app-navbar>
 <div class="center-container container">
-	<ion-card>
+	<ion-card class="form-card">
 		<ion-card-content>
 			<form
 				[formGroup]="createEditForm"
@@ -73,11 +74,9 @@
 				</div>
 				<div class="ion-text-center ion-margin-top">
 					<ion-button type="submit" [disabled]="!createEditForm.valid">
-						<ion-icon name="checkmark"></ion-icon>
 						Speichern
 					</ion-button>
-					<ion-button [routerLink]="['../../home']">
-						<ion-icon name="close-outline"></ion-icon>
+					<ion-button [routerLink]="['../../home']" fill="clear" color="medium">
 						Abbrechen
 					</ion-button>
 				</div>

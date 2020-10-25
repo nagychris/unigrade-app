@@ -10,6 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AlertService } from "./services/alert.service";
 import { GradeService } from "./services/grade.service";
+import { NavbarComponent } from "./navbar/navbar.component";
 
 @NgModule({
 	declarations: [AppComponent],

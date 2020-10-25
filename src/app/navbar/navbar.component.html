@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+	<ion-toolbar mode="md">
+		<ion-title color="primary" slot="start">
+			<ion-icon name="school" color="primary" class="mr-2"></ion-icon>
+			UniGrade
+		</ion-title>
+		<ion-buttons slot="end" *ngIf="currentGrades?.length">
+			<ion-text class="gpa"
+			>Schnitt:
+				<span class="gpa">{{gpa | number: '1.1-1'}}</span></ion-text
+			>
+			<ion-text class="credits"
+			>ECTS: <span class="credits">{{credits | number}}</span></ion-text
+			>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>

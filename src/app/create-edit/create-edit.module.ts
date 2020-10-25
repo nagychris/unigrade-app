@@ -4,6 +4,7 @@ import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CreateEditComponent } from "./create-edit.component";
 import { RouterModule } from "@angular/router";
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @NgModule({
 	imports: [
@@ -21,7 +22,7 @@ import { RouterModule } from "@angular/router";
 			},
 		]),
 	],
-	declarations: [CreateEditComponent],
+	declarations: [CreateEditComponent, NavbarComponent],
 	providers: [],
 })
 export class CreateEditModule {}
