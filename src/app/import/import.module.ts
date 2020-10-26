@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { ImportComponent } from "./import.component";
 import { FormsModule } from "@angular/forms";
-import { SharedModule } from "../shared/shared.module";
+import { AppModule } from "../app.module";
 
 @NgModule({
 	imports: [
@@ -17,7 +17,7 @@ import { SharedModule } from "../shared/shared.module";
 			},
 		]),
 		FormsModule,
-		SharedModule,
+		AppModule,
 	],
 	declarations: [ImportComponent],
 	providers: [],

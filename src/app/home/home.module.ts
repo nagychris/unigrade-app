@@ -7,8 +7,6 @@ import { NgxCsvParserModule } from "ngx-csv-parser";
 
 import { HomePageRoutingModule } from "./home-routing.module";
 import { GradeCardComponent } from "../grade-card/grade-card.component";
-import { NavbarComponent } from "../navbar/navbar.component";
-import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
 	imports: [
@@ -18,7 +16,6 @@ import { SharedModule } from '../shared/shared.module';
 		HomePageRoutingModule,
 		ReactiveFormsModule,
 		NgxCsvParserModule,
-		SharedModule
 	],
 	declarations: [HomePage, GradeCardComponent],
 	providers: [],
