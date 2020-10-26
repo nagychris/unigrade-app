@@ -4,7 +4,6 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { ImportComponent } from "./import.component";
 import { FormsModule } from "@angular/forms";
-import { AppModule } from "../app.module";
 
 @NgModule({
 	imports: [
@@ -17,7 +16,6 @@ import { AppModule } from "../app.module";
 			},
 		]),
 		FormsModule,
-		AppModule,
 	],
 	declarations: [ImportComponent],
 	providers: [],

@@ -1,4 +1,3 @@
-<app-navbar [currentGrades]="currentGrades" [gpa]="currentGPA" [credits]="totalEcts"></app-navbar>
 <ion-content [fullscreen]="true">
 	<div class="container ion-margin-top h-75">
 		<ion-toolbar *ngIf="currentGrades?.length">
@@ -38,24 +37,24 @@
 			</ion-row>
 		</ion-grid>
 		<div *ngIf="!currentGrades?.length"
-		class="center-container ion-text-center">
-		<ion-card>
-			<ion-card-content class="flex-column">
-				<div class="ion-margin-bottom">
-					<strong>Noch keine Noten vorhanden!</strong><br>
-					Füge Noten hinzu, um deinen Schnitt auszurechnen:
-				</div>
-				<ion-button color="primary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
-					<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
-					Note hinzufügen
-				</ion-button>
-				<br>
-				<ion-button color="primary" [routerLink]="['../../import']">
-					<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
-					Noten importieren
-				</ion-button>
-			</ion-card-content>
-		</ion-card>
+			 class="center-container ion-text-center">
+			<ion-card>
+				<ion-card-content class="flex-column">
+					<div class="ion-margin-bottom">
+						<strong>Noch keine Noten vorhanden!</strong><br>
+						Füge Noten hinzu, um deinen Schnitt auszurechnen:
+					</div>
+					<ion-button color="primary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
+						<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
+						Note hinzufügen
+					</ion-button>
+					<br>
+					<ion-button color="primary" [routerLink]="['../../import']">
+						<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
+						Noten importieren
+					</ion-button>
+				</ion-card-content>
+			</ion-card>
 		</div>
 	</div>
 </ion-content>

@@ -12,8 +12,6 @@ import { Router } from "@angular/router";
 })
 export class HomePage {
 	searchTerm: string = "";
-	totalEcts: number = 0;
-	currentGPA: number = 0.0;
 	currentGrades: GradeEntry[];
 
 	constructor(
@@ -24,28 +22,7 @@ export class HomePage {
 	) {}
 
 	ionViewDidEnter() {
-		this.calculateNumbers();
-	}
-
-	calculateNumbers() {
 		this.currentGrades = this.gradeService.getGradeList();
-		if (this.currentGrades && this.currentGrades.length) {
-			let gradeSum = 0,
-				totalEcts = 0,
-				countingEcts = 0;
-			this.currentGrades.forEach((grade) => {
-				if (grade.counts) {
-					gradeSum += +grade.grade * +grade.credits;
-					countingEcts += +grade.credits;
-				}
-				totalEcts += +grade.credits;
-			});
-			this.totalEcts = totalEcts;
-			this.currentGPA = countingEcts ? gradeSum / countingEcts : 0.0;
-		} else {
-			this.totalEcts = 0;
-			this.currentGPA = 0.0;
-		}
 	}
 
 	getFilteredGrades() {
@@ -75,7 +52,7 @@ export class HomePage {
 			.then((confirm) => {
 				if (confirm) {
 					this.gradeService.removeGrade(gradeEntry);
-					this.calculateNumbers();
+					this.gradeService.calculateNumbers();
 					this.alertService.presentToastWithMsg("Grade deleted successfully.");
 				}
 			});
@@ -84,6 +61,6 @@ export class HomePage {
 	updateCounts(gradeEntry: GradeEntry, counts: boolean) {
 		gradeEntry.counts = counts;
 		this.gradeService.updateGrade(gradeEntry);
-		this.calculateNumbers();
+		this.gradeService.calculateNumbers();
 	}
 }

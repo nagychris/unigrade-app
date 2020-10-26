@@ -104,4 +104,29 @@ export class GradeService {
 			.parse(file, { header: true, delimiter: "," })
 			.pipe(map((result) => result as Array<GradeEntry>));
 	}
+
+	public calculateNumbers() {
+		const grades = this.getGradeList();
+		let result = {
+			ects: 0,
+			gpa: 0.0,
+		};
+
+		if (grades && grades.length) {
+			let gradeSum = 0,
+				totalEcts = 0,
+				countingEcts = 0;
+			grades.forEach((grade) => {
+				if (grade.counts) {
+					gradeSum += +grade.grade * +grade.credits;
+					countingEcts += +grade.credits;
+				}
+				totalEcts += +grade.credits;
+			});
+			result.ects = totalEcts;
+			result.gpa = countingEcts ? gradeSum / countingEcts : 0.0;
+		}
+
+		return result;
+	}
 }

@@ -4,13 +4,13 @@
 			<ion-icon name="school" color="primary" class="mr-2"></ion-icon>
 			UniGrade
 		</ion-title>
-		<ion-buttons slot="end" *ngIf="currentGrades?.length">
+		<ion-buttons slot="end" *ngIf="gpa !== 0.0 && ects !== 0">
 			<ion-text class="gpa"
 			>Schnitt:
 				<span class="gpa">{{gpa | number: '1.1-1'}}</span></ion-text
 			>
 			<ion-text class="credits"
-			>ECTS: <span class="credits">{{credits | number}}</span></ion-text
+			>ECTS: <span class="credits">{{ects | number}}</span></ion-text
 			>
 		</ion-buttons>
 	</ion-toolbar>
