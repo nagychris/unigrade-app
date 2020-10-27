@@ -57,10 +57,13 @@ export class GradeService {
 	}
 
 	public filterItems(searchTerm) {
-		const grades = this.getGradeList();
-		return grades.filter((grade) => {
-			return grade.course.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-		});
+		const grades = this.getGradeList(),
+			result = grades.filter((grade) => {
+				return (
+					grade.course.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+				);
+			});
+		return result.length ? result : null;
 	}
 
 	public appendGrades(grades: GradeEntry[]) {

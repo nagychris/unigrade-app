@@ -4,6 +4,7 @@ import { AlertController } from "@ionic/angular";
 import { GradeService } from "../services/grade.service";
 import { AlertService } from "../services/alert.service";
 import { Router } from "@angular/router";
+import { filter } from "rxjs/operators";
 
 @Component({
 	selector: "app-home",
@@ -13,6 +14,7 @@ import { Router } from "@angular/router";
 export class HomePage {
 	searchTerm: string = "";
 	currentGrades: GradeEntry[];
+	noFilterResults: boolean = false;
 
 	constructor(
 		private gradeService: GradeService,
@@ -27,6 +29,9 @@ export class HomePage {
 
 	getFilteredGrades() {
 		this.currentGrades = this.gradeService.filterItems(this.searchTerm);
+		if (!this.currentGrades) {
+			this.noFilterResults = true;
+		}
 	}
 
 	exportGrades(fileName?: string) {
