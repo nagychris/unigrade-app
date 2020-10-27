@@ -1,14 +1,14 @@
 .gpa-card {
-	color: var(--ion-color-dark);
-	font-weight: bolder;
-	font-size: 1rem;
+  color: var(--ion-color-dark);
+  font-weight: bolder;
+  font-size: 1rem;
 }
 
 ion-searchbar {
-	padding-left: 10px;
-	padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 div.container {
-  overflow: scroll;
+  overflow: auto;
 }
