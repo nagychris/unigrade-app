@@ -1,24 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { GradeCardComponent } from './grade-card.component';
+import { GradeCardComponent } from "./grade-card.component";
 
-describe('GradeCardComponent', () => {
-  let component: GradeCardComponent;
-  let fixture: ComponentFixture<GradeCardComponent>;
+describe("GradeCardComponent", () => {
+	let component: GradeCardComponent;
+	let fixture: ComponentFixture<GradeCardComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ GradeCardComponent ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [GradeCardComponent],
+			imports: [IonicModule.forRoot()],
+		}).compileComponents();
 
-    fixture = TestBed.createComponent(GradeCardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+		fixture = TestBed.createComponent(GradeCardComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	}));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it("should create", () => {
+		expect(component).toBeTruthy();
+	});
 });

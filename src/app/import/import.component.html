@@ -1,0 +1,25 @@
+<div class="center-container container">
+	<ion-card class="form-card">
+		<ion-card-content>
+			<ion-item>
+				<input type="file" (change)="loadFile($event)" accept="text/csv"/>
+			</ion-item>
+			<ion-item>
+				<ion-checkbox
+						color="primary"
+						slot="start"
+						[(ngModel)]="keepGrades"
+				></ion-checkbox>
+				<ion-label class="ion-text-wrap">Bestehende Noten behalten</ion-label>
+			</ion-item>
+			<div class="ion-text-center ion-margin-top">
+				<ion-button [disabled]="!file" (click)="importGrades()">
+					Importieren
+				</ion-button>
+				<ion-button [routerLink]="['../../home']" fill="clear" color="medium">
+					Abbrechen
+				</ion-button>
+			</div>
+		</ion-card-content>
+	</ion-card>
+</div>

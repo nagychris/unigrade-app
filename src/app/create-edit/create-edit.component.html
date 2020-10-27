@@ -1,0 +1,85 @@
+<div class="center-container container">
+	<ion-card class="form-card">
+		<ion-card-content>
+			<form
+					[formGroup]="createEditForm"
+					(ngSubmit)="onSubmit()"
+					(keyup.enter)="onSubmit()"
+					(keyup.escape)="cancel()"
+			>
+				<div class="input-container">
+					<ion-item>
+						<ion-label position="stacked">Kursname</ion-label>
+						<ion-input type="text" formControlName="course"></ion-input>
+					</ion-item>
+					<ion-text *ngIf="course?.errors?.minlength && course?.dirty">
+						Kursname muss mindestens 2 Buchstaben enthalten.
+					</ion-text>
+					<ion-text *ngIf="course?.errors?.required && course?.dirty">
+						Kursname ist ein Pflichtfeld.
+					</ion-text>
+					<ion-item>
+						<ion-label position="stacked">Semester</ion-label>
+						<ion-input
+								type="text"
+								formControlName="semester"
+								placeholder="z.B. SS 20"
+						></ion-input>
+					</ion-item>
+					<ion-text *ngIf="semester?.errors?.required && semester?.dirty">
+						Semester ist ein Pflichtfeld.
+					</ion-text>
+					<ion-item>
+						<ion-label position="stacked">Note</ion-label>
+						<ion-input
+								type="number"
+								formControlName="grade"
+								min="1.0"
+								max="5.0"
+								inputmode="decimal"
+						></ion-input>
+					</ion-item>
+					<ion-text *ngIf="grade?.errors?.required && grade?.dirty">
+						Note ist ein Pflichtfeld.
+					</ion-text>
+					<ion-text
+							*ngIf="(grade?.errors?.min || grade?.errors?.max) && grade?.dirty"
+					>
+						Note muss zwischen 1.0 und 5.0 liegen.
+					</ion-text>
+					<ion-item>
+						<ion-label position="stacked">ECTS-Punkte</ion-label>
+						<ion-input
+								type="number"
+								formControlName="credits"
+								min="1"
+								max="20"
+						></ion-input>
+					</ion-item>
+					<ion-text *ngIf="credits?.errors?.required && credits?.dirty">
+						ECTS-Punkte ist ein Pflichtfeld.
+					</ion-text>
+					<ion-text *ngIf="credits?.errors?.min && credits?.dirty">
+						ECTS-Punkte müssen mindestens 1 sein.
+					</ion-text>
+					<ion-item>
+						<ion-checkbox
+								color="primary"
+								slot="start"
+								formControlName="counts"
+						></ion-checkbox>
+						<ion-label class="ion-text-wrap">Zählt in den Schnitt</ion-label>
+					</ion-item>
+				</div>
+				<div class="ion-text-center ion-margin-top">
+					<ion-button type="submit" [disabled]="!createEditForm.valid">
+						Speichern
+					</ion-button>
+					<ion-button [routerLink]="['../../home']" fill="clear" color="medium">
+						Abbrechen
+					</ion-button>
+				</div>
+			</form>
+		</ion-card-content>
+	</ion-card>
+</div>

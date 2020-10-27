@@ -1,16 +1,30 @@
-<ion-card>
-    <ion-card-header>
-        <div class="d-flex justify-content-between">
-            <div>
-                <ion-badge class="text-white mr-2">{{this.gradeEntry.ectsPoints}} ECTS</ion-badge>
-                <ion-badge class="text-white">{{this.gradeEntry.semester}}</ion-badge>
-            </div>
-            <ion-icon name="ellipsis-horizontal"></ion-icon>
-        </div>
-        <ion-card-title>{{this.gradeEntry.course}}</ion-card-title>
-    </ion-card-header>
+<ion-card class="ion-no-margin">
+	<ion-card-header class="d-flex justify-content-between">
+		<div class="d-flex">
+			<ion-checkbox
+					color="primary"
+					[(ngModel)]="counts"
+					(ionChange)="countsClicked.emit(counts)"
+					class="ion-margin-end"
+			></ion-checkbox>
+			<ion-card-title>{{ this.gradeEntry.course }}</ion-card-title>
+		</div>
+		<ion-icon
+				(click)="presentActionSheet()"
+				name="ellipsis-horizontal"
+				title="Show actions"
+		></ion-icon>
+	</ion-card-header>
 
-    <ion-card-content>
-        <ion-chip>{{this.gradeEntry.grade | number:'1.1'}}</ion-chip>
-    </ion-card-content>
+	<ion-card-content>
+		<ion-chip [color]="evaluateColor()">{{
+			this.gradeEntry.grade | number: "1.1-1"
+			}}</ion-chip>
+		<ion-chip color="medium" outline="true">{{
+			this.gradeEntry.semester
+			}}</ion-chip>
+		<ion-chip color="medium" outline="true">
+			{{ this.gradeEntry.credits }} Credits
+		</ion-chip>
+	</ion-card-content>
 </ion-card>

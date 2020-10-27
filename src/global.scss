@@ -29,5 +29,29 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 ion-button {
-  color: white;
+	color: white;
+}
+
+ion-card-title {
+	font-size: 1.3rem;
+}
+
+.center-container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+ion-card {
+	box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.form-card {
+	min-width: 95%;
+}
+
+ion-content {
+  --offset-top: -15px !important;
 }
