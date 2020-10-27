@@ -1,12 +1,12 @@
 {
 	"name": "grade-sum",
-	"version": "0.0.1",
-	"author": "Ionic Framework",
-	"homepage": "https://ionicframework.com/",
+	"version": "1.0.0",
+	"author": "Christopher Nagy",
+	"homepage": "",
 	"scripts": {
 		"ng": "ng",
-		"start": "ng serve --o",
-		"build": "ng build",
+		"start": "ionic serve --o",
+		"build": "ionic build --prod",
 		"test": "ng test",
 		"lint": "ng lint",
 		"e2e": "ng e2e"
