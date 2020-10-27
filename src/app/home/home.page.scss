@@ -4,14 +4,11 @@
 	font-size: 1rem;
 }
 
-.center-container {
-	margin: auto;
-	padding-top: 50%;
-}
-
 ion-searchbar {
 	padding-left: 10px;
 	padding-right: 10px;
 }
 
-
+div.container {
+  overflow: scroll;
+}

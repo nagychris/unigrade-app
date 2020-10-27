@@ -51,3 +51,7 @@ ion-card {
 .form-card {
 	min-width: 95%;
 }
+
+ion-content {
+  --offset-top: -15px !important;
+}
