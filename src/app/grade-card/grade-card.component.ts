@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { GradeEntry } from "../services/GradeEntry";
+import { GradeEntryModel } from "../models/grade-entry.model";
 import { ActionSheetController } from "@ionic/angular";
 
 @Component({
@@ -8,13 +8,17 @@ import { ActionSheetController } from "@ionic/angular";
 	styleUrls: ["./grade-card.component.scss"],
 })
 export class GradeCardComponent implements OnInit {
-	@Input() gradeEntry: GradeEntry;
+	@Input() gradeEntry: GradeEntryModel;
 	@Input() counts: boolean;
 
 	@Output()
-	editClicked: EventEmitter<GradeEntry> = new EventEmitter<GradeEntry>();
+	editClicked: EventEmitter<GradeEntryModel> = new EventEmitter<
+		GradeEntryModel
+	>();
 	@Output()
-	deleteClicked: EventEmitter<GradeEntry> = new EventEmitter<GradeEntry>();
+	deleteClicked: EventEmitter<GradeEntryModel> = new EventEmitter<
+		GradeEntryModel
+	>();
 	@Output()
 	countsClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 

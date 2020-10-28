@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { GradeEntry } from "../services/GradeEntry";
+import { GradeEntryModel } from "../models/grade-entry.model";
 import { GradeService } from "../services/grade.service";
 import { AlertService } from "../services/alert.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -14,7 +14,7 @@ import { Location } from "@angular/common";
 export class CreateEditComponent implements OnInit {
 	private id: number;
 	createEditForm: FormGroup;
-	@Input() gradeEntry: GradeEntry;
+	@Input() gradeEntry: GradeEntryModel;
 
 	constructor(
 		private location: Location,

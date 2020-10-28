@@ -1,4 +1,4 @@
-export class GradeEntry {
+export class GradeEntryModel {
 	id?: number;
 	course: string = "";
 	grade: number = 5.0;

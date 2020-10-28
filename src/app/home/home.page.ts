@@ -1,10 +1,9 @@
 import { Component } from "@angular/core";
-import { GradeEntry } from "../services/GradeEntry";
+import { GradeEntryModel } from "../models/grade-entry.model";
 import { AlertController } from "@ionic/angular";
 import { GradeService } from "../services/grade.service";
 import { AlertService } from "../services/alert.service";
 import { Router } from "@angular/router";
-import { filter } from "rxjs/operators";
 
 @Component({
 	selector: "app-home",
@@ -13,7 +12,7 @@ import { filter } from "rxjs/operators";
 })
 export class HomePage {
 	searchTerm: string = "";
-	currentGrades: GradeEntry[];
+	currentGrades: GradeEntryModel[];
 	noFilterResults: boolean = false;
 
 	constructor(
@@ -43,11 +42,11 @@ export class HomePage {
 		}
 	}
 
-	onNavigate(gradeEntry?: GradeEntry) {
+	onNavigate(gradeEntry?: GradeEntryModel) {
 		this.router.navigate(["tabs/create-edit", gradeEntry.id]);
 	}
 
-	deleteGrade(gradeEntry: GradeEntry) {
+	deleteGrade(gradeEntry: GradeEntryModel) {
 		this.alertService
 			.presentConfirmationAlert(
 				"Do you really want to remove the grade of <strong>" +
@@ -57,15 +56,14 @@ export class HomePage {
 			.then((confirm) => {
 				if (confirm) {
 					this.gradeService.removeGrade(gradeEntry);
-					this.gradeService.calculateNumbers();
+					this.currentGrades = this.gradeService.getGradeList();
 					this.alertService.presentToastWithMsg("Grade deleted successfully.");
 				}
 			});
 	}
 
-	updateCounts(gradeEntry: GradeEntry, counts: boolean) {
+	updateCounts(gradeEntry: GradeEntryModel, counts: boolean) {
 		gradeEntry.counts = counts;
 		this.gradeService.updateGrade(gradeEntry);
-		this.gradeService.calculateNumbers();
 	}
 }

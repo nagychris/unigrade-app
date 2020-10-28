@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
-import { GradeEntry } from "./GradeEntry";
+import { GradeEntryModel } from "../models/grade-entry.model";
 import { map } from "rxjs/operators";
 import { NgxCsvParser } from "ngx-csv-parser";
 import { saveAs } from "file-saver";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
+import { NumberEntryModel } from "../models/number-entry.model";
 
 @Injectable({
 	providedIn: "root",
@@ -11,23 +12,29 @@ import { Observable } from "rxjs";
 export class GradeService {
 	private GRADE_LIST = "gradeList";
 
-	constructor(private csvParser: NgxCsvParser) {}
+	private numberSource = new BehaviorSubject(new NumberEntryModel());
+	numbers = this.numberSource.asObservable();
 
-	public getGradeById(id: number): GradeEntry {
+	constructor(private csvParser: NgxCsvParser) {
+		this.calculateNumbers();
+	}
+
+	public getGradeById(id: number): GradeEntryModel {
 		const grades = this.getGradeList();
 		return grades.find((entry) => entry.id == id);
 	}
 
-	public getGradeList(): GradeEntry[] {
+	public getGradeList(): GradeEntryModel[] {
 		return JSON.parse(localStorage.getItem(this.GRADE_LIST));
 	}
 
-	public setGradeList(gradeList: GradeEntry[]): void {
+	public setGradeList(gradeList: GradeEntryModel[]): void {
 		localStorage.setItem(this.GRADE_LIST, JSON.stringify(gradeList));
+		this.calculateNumbers();
 	}
 
-	public addGrade(gradeEntry: GradeEntry): void {
-		let gradeList: GradeEntry[] = this.getGradeList();
+	public addGrade(gradeEntry: GradeEntryModel): void {
+		let gradeList: GradeEntryModel[] = this.getGradeList();
 		if (!gradeList) {
 			gradeList = [];
 		}
@@ -36,8 +43,8 @@ export class GradeService {
 		this.setGradeList(gradeList);
 	}
 
-	public updateGrade(gradeEntry: GradeEntry): void {
-		let gradeList: GradeEntry[] = this.getGradeList();
+	public updateGrade(gradeEntry: GradeEntryModel): void {
+		let gradeList: GradeEntryModel[] = this.getGradeList();
 		gradeList.forEach((entry, index) => {
 			if (entry.id == gradeEntry.id) {
 				gradeList.splice(index, 1, gradeEntry);
@@ -46,19 +53,20 @@ export class GradeService {
 		this.setGradeList(gradeList);
 	}
 
-	public removeGrade(gradeEntry: GradeEntry): void {
-		let gradeList: GradeEntry[] = this.getGradeList();
+	public removeGrade(gradeEntry: GradeEntryModel): void {
+		let gradeList: GradeEntryModel[] = this.getGradeList();
 		gradeList.forEach((entry, index) => {
 			if (entry.id == gradeEntry.id) {
 				gradeList.splice(index, 1);
 			}
 		});
 		this.setGradeList(gradeList);
+		this.calculateNumbers();
 	}
 
 	public filterItems(searchTerm) {
-		const grades = this.getGradeList(),
-			result = grades.filter((grade) => {
+		const gradeList = this.getGradeList(),
+			result = gradeList.filter((grade) => {
 				return (
 					grade.course.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
 				);
@@ -66,10 +74,11 @@ export class GradeService {
 		return result.length ? result : null;
 	}
 
-	public appendGrades(grades: GradeEntry[]) {
+	public appendGrades(grades: GradeEntryModel[]) {
 		grades.forEach((grade) => {
 			this.addGrade(grade);
 		});
+		this.calculateNumbers();
 	}
 
 	/**
@@ -102,10 +111,10 @@ export class GradeService {
 	 * @returns Either an Array of JSON objects
 	 *          or {@code false} if any errors occur while parsing the file
 	 */
-	public parseCsv(file: File): Observable<Array<GradeEntry>> {
+	public parseCsv(file: File): Observable<Array<GradeEntryModel>> {
 		return this.csvParser
 			.parse(file, { header: true, delimiter: "," })
-			.pipe(map((result) => result as Array<GradeEntry>));
+			.pipe(map((result) => result as Array<GradeEntryModel>));
 	}
 
 	public calculateNumbers() {
@@ -113,7 +122,7 @@ export class GradeService {
 		let result = {
 			ects: 0,
 			gpa: 0.0,
-		};
+		} as NumberEntryModel;
 
 		if (grades && grades.length) {
 			let gradeSum = 0,
@@ -129,7 +138,6 @@ export class GradeService {
 			result.ects = totalEcts;
 			result.gpa = countingEcts ? gradeSum / countingEcts : 0.0;
 		}
-
-		return result;
+		this.numberSource.next(result);
 	}
 }

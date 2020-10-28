@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { GradeService } from "../services/grade.service";
+import { NumberEntryModel } from "../models/number-entry.model";
 
 @Component({
 	selector: "app-navbar",
@@ -6,10 +8,13 @@ import { Component, Input, OnInit } from "@angular/core";
 	styleUrls: ["./navbar.component.scss"],
 })
 export class NavbarComponent implements OnInit {
-	@Input() gpa: number;
-	@Input() ects: number;
+	numbers: NumberEntryModel;
 
-	constructor() {}
+	constructor(private gradeService: GradeService) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.gradeService.numbers.subscribe((result) => {
+			this.numbers = result;
+		});
+	}
 }
