@@ -1,14 +1,11 @@
 <div class="center-container container">
-	<ion-card class="form-card">
-		<ion-card-content>
 			<form
 					[formGroup]="createEditForm"
 					(ngSubmit)="onSubmit()"
 					(keyup.enter)="onSubmit()"
 					(keyup.escape)="cancel()"
 			>
-				<div class="input-container">
-					<ion-item>
+					<ion-item lines="none">
 						<ion-label position="stacked">Kursname</ion-label>
 						<ion-input type="text" formControlName="course"></ion-input>
 					</ion-item>
@@ -18,7 +15,7 @@
 					<ion-text *ngIf="course?.errors?.required && course?.dirty">
 						Kursname ist ein Pflichtfeld.
 					</ion-text>
-					<ion-item>
+					<ion-item lines="none">
 						<ion-label position="stacked">Semester</ion-label>
 						<ion-input
 								type="text"
@@ -29,7 +26,7 @@
 					<ion-text *ngIf="semester?.errors?.required && semester?.dirty">
 						Semester ist ein Pflichtfeld.
 					</ion-text>
-					<ion-item>
+					<ion-item lines="none">
 						<ion-label position="stacked">Note</ion-label>
 						<ion-input
 								type="number"
@@ -47,7 +44,7 @@
 					>
 						Note muss zwischen 1.0 und 5.0 liegen.
 					</ion-text>
-					<ion-item>
+					<ion-item lines="none">
 						<ion-label position="stacked">ECTS-Punkte</ion-label>
 						<ion-input
 								type="number"
@@ -62,7 +59,7 @@
 					<ion-text *ngIf="credits?.errors?.min && credits?.dirty">
 						ECTS-Punkte müssen mindestens 1 sein.
 					</ion-text>
-					<ion-item>
+					<ion-item lines="none">
 						<ion-checkbox
 								color="primary"
 								slot="start"
@@ -70,7 +67,6 @@
 						></ion-checkbox>
 						<ion-label class="ion-text-wrap">Zählt in den Schnitt</ion-label>
 					</ion-item>
-				</div>
 				<div class="ion-text-center ion-margin-top">
 					<ion-button type="submit" [disabled]="!createEditForm.valid">
 						Speichern
@@ -80,6 +76,4 @@
 					</ion-button>
 				</div>
 			</form>
-		</ion-card-content>
-	</ion-card>
 </div>

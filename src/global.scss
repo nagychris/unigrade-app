@@ -48,6 +48,7 @@ ion-card {
 	box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
 }
 
-.form-card {
-	min-width: 95%;
+ion-item {
+  width: 90%;
+  border-bottom: 1px solid var(--ion-color-light);
 }

@@ -1,10 +1,8 @@
 <div class="center-container container">
-	<ion-card class="form-card">
-		<ion-card-content>
-			<ion-item>
+			<ion-item lines="none">
 				<input type="file" (change)="loadFile($event)" accept="text/csv"/>
 			</ion-item>
-			<ion-item>
+			<ion-item lines="none">
 				<ion-checkbox
 						color="primary"
 						slot="start"
@@ -20,6 +18,4 @@
 					Abbrechen
 				</ion-button>
 			</div>
-		</ion-card-content>
-	</ion-card>
 </div>
