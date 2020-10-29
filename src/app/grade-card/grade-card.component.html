@@ -9,11 +9,12 @@
 			></ion-checkbox>
 			<ion-card-title>{{ this.gradeEntry.course }}</ion-card-title>
 		</div>
-		<ion-icon
-				(click)="presentActionSheet()"
-				name="ellipsis-horizontal"
-				title="Show actions"
-		></ion-icon>
+		<div class="icon-container">
+			<ion-icon name="create-outline" class="ion-margin-end"
+					  (click)="editClicked.emit(this.gradeEntry)"></ion-icon>
+			<ion-icon name="trash-outline"
+					  (click)="deleteClicked.emit(this.gradeEntry)"></ion-icon>
+		</div>
 	</ion-card-header>
 
 	<ion-card-content>

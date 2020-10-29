@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { GradeEntryModel } from "../models/grade-entry.model";
-import { ActionSheetController } from "@ionic/angular";
 
 @Component({
 	selector: "app-grade-card",
@@ -22,36 +21,9 @@ export class GradeCardComponent implements OnInit {
 	@Output()
 	countsClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	constructor(public actionSheetCtrl: ActionSheetController) {}
+	constructor() {}
 
 	ngOnInit() {}
-
-	async presentActionSheet() {
-		const actionSheet = await this.actionSheetCtrl.create({
-			header: this.gradeEntry.course,
-			cssClass: "grade-action-sheet",
-			buttons: [
-				{
-					text: "Edit",
-					handler: () => {
-						this.editClicked.emit(this.gradeEntry);
-					},
-				},
-				{
-					text: "Delete",
-					role: "destructive",
-					handler: () => {
-						this.deleteClicked.emit(this.gradeEntry);
-					},
-				},
-				{
-					text: "Cancel",
-					role: "cancel",
-				},
-			],
-		});
-		await actionSheet.present();
-	}
 
 	evaluateColor(): string {
 		const grade = this.gradeEntry.grade;

@@ -49,7 +49,8 @@ ion-card {
 }
 
 ion-item {
-  width: 90%;
+  padding: 5px 0;
+  width: 85%;
   border-bottom: 1px solid var(--ion-color-light);
 }
 
@@ -72,4 +73,8 @@ ion-content {
 
 ion-header {
   font-family: Poppins, sans-serif;
+}
+
+ion-label.checkbox-label {
+  font-size: 0.9rem !important;
 }
