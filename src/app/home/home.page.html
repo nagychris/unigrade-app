@@ -36,24 +36,19 @@
 		</ion-row>
 	</ion-grid>
 	<div *ngIf="!currentGrades?.length && !noFilterResults"
-		 class="center-container ion-text-center">
-		<ion-card>
-			<ion-card-content class="flex-column">
+		 class="center-container ion-text-center ion-margin-vertical">
 				<div class="ion-margin-bottom">
 					<strong>Noch keine Noten vorhanden!</strong><br>
 					Füge Noten hinzu, um deinen Schnitt auszurechnen:
 				</div>
-				<ion-button color="primary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
+				<ion-button color="secondary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
 					<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
 					Note hinzufügen
 				</ion-button>
-				<br>
-				<ion-button color="primary" [routerLink]="['../../import']">
+				<ion-button color="secondary" [routerLink]="['../../import']">
 					<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
 					Noten importieren
 				</ion-button>
-			</ion-card-content>
-		</ion-card>
 	</div>
 	<div *ngIf="!currentGrades?.length && noFilterResults" class="ion-text-center ion-margin-vertical">
 		<strong>Keine Ergebnisse!</strong>

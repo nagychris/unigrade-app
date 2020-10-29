@@ -13,3 +13,9 @@ ion-searchbar {
 div.container {
   overflow: auto;
 }
+
+div.center-container {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
