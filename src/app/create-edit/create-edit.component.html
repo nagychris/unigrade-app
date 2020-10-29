@@ -61,14 +61,14 @@
 					</ion-text>
 					<ion-item lines="none">
 						<ion-checkbox
-								color="primary"
+								color="secondary"
 								slot="start"
 								formControlName="counts"
 						></ion-checkbox>
 						<ion-label class="ion-text-wrap checkbox-label">Zählt in den Schnitt</ion-label>
 					</ion-item>
 				<div class="ion-text-center ion-margin-top">
-					<ion-button type="submit" [disabled]="!createEditForm.valid">
+					<ion-button type="submit" color="secondary" [disabled]="!createEditForm.valid">
 						Speichern
 					</ion-button>
 					<ion-button [routerLink]="['../../home']" fill="clear" color="medium">

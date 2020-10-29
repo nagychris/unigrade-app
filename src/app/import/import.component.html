@@ -4,14 +4,14 @@
 			</ion-item>
 			<ion-item lines="none">
 				<ion-checkbox
-						color="primary"
+						color="secondary"
 						slot="start"
 						[(ngModel)]="keepGrades"
 				></ion-checkbox>
 				<ion-label class="ion-text-wrap checkbox-label">Bestehende Noten behalten</ion-label>
 			</ion-item>
 			<div class="ion-text-center ion-margin-top">
-				<ion-button [disabled]="!file" (click)="importGrades()">
+				<ion-button color="secondary" [disabled]="!file" (click)="importGrades()">
 					Importieren
 				</ion-button>
 				<ion-button [routerLink]="['../../home']" fill="clear" color="medium">
