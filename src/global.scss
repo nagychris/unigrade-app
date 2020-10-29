@@ -45,10 +45,31 @@ ion-card-title {
 }
 
 ion-card {
-	box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
+	box-shadow: 1px 3px 3px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 ion-item {
   width: 90%;
   border-bottom: 1px solid var(--ion-color-light);
+}
+
+/*
+ - Fonts
+ */
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-SemiBold.ttf');
+}
+
+ion-content {
+  font-family: Roboto, sans-serif;
+}
+
+ion-header {
+  font-family: Poppins, sans-serif;
 }

@@ -1,11 +1,14 @@
 ion-card-title {
-	font-weight: normal;
+	font-weight: 500;
 	font-size: 1.1rem;
 }
 
-ion-chip.grade {
-	color: var(--ion-color-yellow);
-	background: var(--ion-color-yellow-shade);
+ion-card-header {
+  padding: 12px 12px 5px 12px;
+}
+
+ion-card-content {
+  padding: 12px;
 }
 
 ion-icon[name="ellipsis-horizontal"] {
