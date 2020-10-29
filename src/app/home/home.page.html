@@ -35,22 +35,22 @@
 			</ion-col>
 		</ion-row>
 	</ion-grid>
-	<div *ngIf="!currentGrades?.length && !noFilterResults"
-		 class="center-container ion-text-center ion-margin-vertical">
-				<div class="ion-margin-bottom">
-					<strong>Noch keine Noten vorhanden!</strong><br>
-					Füge Noten hinzu, um deinen Schnitt auszurechnen:
-				</div>
-				<ion-button color="secondary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
-					<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
-					Note hinzufügen
-				</ion-button>
-				<ion-button color="secondary" [routerLink]="['../../import']">
-					<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
-					Noten importieren
-				</ion-button>
-	</div>
 	<div *ngIf="!currentGrades?.length && noFilterResults" class="ion-text-center ion-margin-vertical">
 		<strong>Keine Ergebnisse!</strong>
 	</div>
+</div>
+<div *ngIf="!currentGrades?.length && !noFilterResults"
+	 class="center-container container">
+	<div class="ion-margin-bottom">
+		<strong>Noch keine Noten vorhanden!</strong><br>
+		Füge Noten hinzu, um deinen Schnitt auszurechnen:
+	</div>
+	<ion-button color="secondary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
+		<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
+		Note hinzufügen
+	</ion-button>
+	<ion-button color="secondary" [routerLink]="['../../import']">
+		<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
+		Noten importieren
+	</ion-button>
 </div>

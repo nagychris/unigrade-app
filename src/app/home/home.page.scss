@@ -10,12 +10,9 @@ ion-searchbar {
   --box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
 }
 
-div.container {
+div.container.center-container {
   overflow: auto;
-}
-
-div.center-container {
   display: flex;
   flex-direction: column;
-  font-size: 1rem;
+  text-align: center;
 }
