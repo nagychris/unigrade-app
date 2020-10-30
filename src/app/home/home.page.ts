@@ -36,9 +36,12 @@ export class HomePage {
 	exportGrades(fileName?: string) {
 		if (this.currentGrades && this.currentGrades.length) {
 			this.gradeService.downloadCsv(this.currentGrades, fileName);
-			this.alertService.presentToastWithMsg("Download started successfully.");
+			this.alertService.presentToastWithMsg("Download des Exports gestartet.");
 		} else {
-			this.alertService.presentToastWithMsg("No data to export!", "danger");
+			this.alertService.presentToastWithMsg(
+				"Keine Noten zu exportieren!",
+				"danger"
+			);
 		}
 	}
 
@@ -49,15 +52,15 @@ export class HomePage {
 	deleteGrade(gradeEntry: GradeEntryModel) {
 		this.alertService
 			.presentConfirmationAlert(
-				"Do you really want to remove the grade of <strong>" +
+				"Möchtest du die Note vom Kurs <strong>" +
 					gradeEntry.course +
-					"</strong>?"
+					"</strong> wirklich löschen?"
 			)
 			.then((confirm) => {
 				if (confirm) {
 					this.gradeService.removeGrade(gradeEntry);
 					this.currentGrades = this.gradeService.getGradeList();
-					this.alertService.presentToastWithMsg("Grade deleted successfully.");
+					this.alertService.presentToastWithMsg("Note erfolgreich gelöscht.");
 				}
 			});
 	}

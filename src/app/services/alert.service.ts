@@ -26,18 +26,18 @@ export class AlertService {
 		});
 
 		const alert = await this.alertController.create({
-			header: "Confirmation",
+			header: "Note löschen",
 			message: message,
 			buttons: [
 				{
-					text: "No",
+					text: "Abbrechen",
 					role: "cancel",
 					handler: () => {
 						resolveFunction(false);
 					},
 				},
 				{
-					text: "Yes",
+					text: "Ja",
 					handler: () => {
 						resolveFunction(true);
 					},

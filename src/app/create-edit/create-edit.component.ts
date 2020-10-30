@@ -61,7 +61,7 @@ export class CreateEditComponent implements OnInit {
 	onSubmit() {
 		if (!this.createEditForm.valid) {
 			this.alertService.presentToastWithMsg(
-				"Please fill in all required fields first.",
+				"Bitte alle Pflichtfelder ausfüllen.",
 				"danger"
 			);
 		} else {
@@ -70,12 +70,12 @@ export class CreateEditComponent implements OnInit {
 			if (!this.id) {
 				// new gradeEntry --> add to list
 				this.gradeService.addGrade(grade);
-				message = "Grade created successfully.";
+				message = "Note erfolgreich hinzugefügt.";
 			} else {
 				// edit existing gradeEntry
 				grade.id = this.id;
 				this.gradeService.updateGrade(grade);
-				message = "Grade updated successfully.";
+				message = "Note erfolgreich gespeichert.";
 			}
 			this.router.navigate(["tabs/home"]).then(() => {
 				this.alertService.presentToastWithMsg(message).then(() => {

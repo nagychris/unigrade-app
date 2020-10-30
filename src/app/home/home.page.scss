@@ -11,8 +11,11 @@ ion-searchbar {
 }
 
 div.container.center-container {
-  overflow: auto;
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+div.container {
+  overflow: auto;
 }
