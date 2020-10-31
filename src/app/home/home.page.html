@@ -1,23 +1,20 @@
-<div class="container ion-padding-vertical">
-	<ion-toolbar *ngIf="currentGrades?.length || noFilterResults">
+<div class="container">
+	<ion-toolbar class="ion-margin-vertical ion-no-padding" *ngIf="currentGrades?.length || noFilterResults">
 		<ion-searchbar
-				showCancelButton="focus"
 				inputmode="text"
+				mode="md"
 				[(ngModel)]="searchTerm"
 				(ionChange)="getFilteredGrades()"
 				placeholder="Suchen"
+				class="ion-no-padding "
 		></ion-searchbar>
-		<ion-buttons slot="end">
-			<ion-button
-					color="primary"
-					title="Export as CSV"
-					(click)="exportGrades()"
-			>
-				<ion-icon name="download-outline"></ion-icon>
-			</ion-button>
-		</ion-buttons>
+		<ion-fab-button slot="end" title="Export as CSV"
+						[routerLink]="['../../create-edit']"
+						class="fab-btn fab-btn--white" size="small">
+			<ion-icon name="add-outline" color="primary"></ion-icon>
+		</ion-fab-button>
 	</ion-toolbar>
-	<ion-grid class="grade-card-container" *ngIf="currentGrades?.length">
+	<ion-grid class="grade-card-container ion-no-padding" *ngIf="currentGrades?.length">
 		<ion-row>
 			<ion-col
 					*ngFor="let gradeEntry of currentGrades"

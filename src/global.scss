@@ -44,8 +44,12 @@ ion-card-title {
 	justify-content: center;
 }
 
-ion-card {
+ion-card{
 	box-shadow: 1px 3px 3px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+ion-card, ion-searchbar {
+  --ion-background-color: white;
 }
 
 ion-item {
@@ -68,6 +72,7 @@ ion-item {
 }
 
 ion-content {
+  --ion-background-color: var(--ion-color-light);
   font-family: Roboto, sans-serif;
 }
 

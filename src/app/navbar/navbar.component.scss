@@ -1,20 +1,13 @@
-ion-title {
-	font-weight: 600;
-}
+.number-content {
+  padding-right: 20px;
+  font-size: .9rem;
 
-span.gpa,
-span.credits {
-	font-weight: bolder;
-	font-size: 1rem;
-	color: var(--ion-color-primary);
-}
-
-ion-text.gpa,
-ion-text.credits {
-	padding-right: 1rem;
-}
-
-ion-text.current-numbers {
-	font-weight: normal;
-	font-size: 1.3rem;
+  &__text{
+	&:not(:last-child) {
+	  margin-right: 1rem;
+	}
+	&--primary {
+	  color: var(--ion-color-primary);
+	}
+  }
 }

@@ -1,10 +1,23 @@
+.fab-btn {
+  margin: 0;
+  width: 28px;
+  height: 28px;
+  --box-shadow: none;
+}
+
+ion-chip, .fab-btn {
+  &:not(:last-child) {
+	margin-right: 8px;
+  }
+}
+
 ion-card-title {
 	font-weight: 500;
 	font-size: 1.1rem;
 }
 
 ion-card-header {
-  padding: 12px 12px 5px 12px;
+  padding: 12px;
 }
 
 ion-card-content {
