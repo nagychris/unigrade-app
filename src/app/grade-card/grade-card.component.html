@@ -1,4 +1,4 @@
-<ion-card >
+<ion-card class="ion-no-margin">
 	<ion-card-header class="d-flex justify-content-between align-items-center">
 		<div class="d-flex">
 			<ion-checkbox
@@ -12,11 +12,11 @@
 
 		<ion-buttons>
 			<ion-fab-button (click)="editClicked.emit(this.gradeEntry)"
-							class="fab-btn fab-btn--white" color="warning" size="small">
+							class="fab-btn fab-btn--yellow" size="small">
 				<ion-icon name="create-outline"></ion-icon>
 			</ion-fab-button>
 			<ion-fab-button (click)="deleteClicked.emit(this.gradeEntry)"
-							class="fab-btn fab-btn--white" color="danger" size="small">
+							class="fab-btn fab-btn--red" size="small">
 				<ion-icon name="trash-outline"></ion-icon>
 			</ion-fab-button>
 		</ion-buttons>

@@ -1,4 +1,7 @@
 .fab-btn {
+  --box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
+  margin: 0 0 0 8px;
+
   &--white {
 	--background: white;
   }
@@ -23,3 +26,4 @@ div.container.center-container {
 div.container {
   overflow: auto;
 }
+

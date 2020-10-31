@@ -33,18 +33,6 @@ export class HomePage {
 		}
 	}
 
-	exportGrades(fileName?: string) {
-		if (this.currentGrades && this.currentGrades.length) {
-			this.gradeService.downloadCsv(this.currentGrades, fileName);
-			this.alertService.presentToastWithMsg("Download des Exports gestartet.");
-		} else {
-			this.alertService.presentToastWithMsg(
-				"Keine Noten zu exportieren!",
-				"danger"
-			);
-		}
-	}
-
 	onNavigate(gradeEntry?: GradeEntryModel) {
 		this.router.navigate(["tabs/create-edit", gradeEntry.id]);
 	}

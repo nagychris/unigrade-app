@@ -1,8 +1,27 @@
+.icon-container {
+  display: flex;
+  min-width: 50px;
+}
+
 .fab-btn {
   margin: 0;
   width: 28px;
   height: 28px;
   --box-shadow: none;
+
+  &--yellow {
+	--background: rgba(var(--ion-color-warning-rgb), 0.08);
+	--color: var(--ion-color-warning);
+  }
+
+  &--red {
+	--background: rgba(var(--ion-color-danger-rgb), 0.08);
+	--color: var(--ion-color-danger);
+  }
+}
+
+ion-icon {
+  font-size: 16px;
 }
 
 ion-chip, .fab-btn {
@@ -11,30 +30,32 @@ ion-chip, .fab-btn {
   }
 }
 
+ion-chip {
+  pointer-events: none;
+}
+
+ion-card {
+  margin-bottom: 1rem;
+}
+
 ion-card-title {
-	font-weight: 500;
-	font-size: 1.1rem;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
-ion-card-header {
+ion-card-header, ion-card-content {
   padding: 12px;
-}
-
-ion-card-content {
-  padding: 12px;
-}
-
-div.icon-container {
-  display: flex;
-  min-width: 50px;
-}
-
-ion-icon {
-	font-size: 16px;
 }
 
 @media screen and (max-width: 767px) {
-	ion-card {
-		max-width: 100%;
-	}
+  ion-card {
+	max-width: 100%;
+  }
 }
+
+@media screen and (min-width: 767px) {
+  ion-card {
+	margin-right: 1rem;
+  }
+}
+

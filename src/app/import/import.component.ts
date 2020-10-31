@@ -24,6 +24,19 @@ export class ImportComponent implements OnInit {
 		this.file = event.target.files[0];
 	}
 
+	exportGrades(fileName?: string) {
+		const gradeList = this.gradeService.getGradeList();
+		if (gradeList && gradeList.length) {
+			this.gradeService.downloadCsv(gradeList, fileName);
+			this.alertService.presentToastWithMsg("Download des Exports gestartet.");
+		} else {
+			this.alertService.presentToastWithMsg(
+				"Keine Noten zu exportieren!",
+				"danger"
+			);
+		}
+	}
+
 	public importGrades() {
 		if (this.file) {
 			this.gradeService.parseCsv(this.file).subscribe(
@@ -35,16 +48,13 @@ export class ImportComponent implements OnInit {
 				},
 				(error) => {
 					this.alertService.presentToastWithMsg(
-						"Error while loading file: " + error,
+						"Fehler beim Laden der Datei: " + error,
 						"danger"
 					);
 				}
 			);
 		} else {
-			this.alertService.presentToastWithMsg(
-				"Error: No file to import!",
-				"danger"
-			);
+			this.alertService.presentToastWithMsg("Keine Datei gefunden!", "danger");
 		}
 	}
 }
