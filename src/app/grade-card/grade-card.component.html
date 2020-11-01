@@ -1,36 +1,42 @@
 <ion-card class="ion-no-margin">
-	<ion-card-header class="d-flex justify-content-between align-items-center">
-		<div class="d-flex">
-			<ion-checkbox
-					color="secondary"
-					[(ngModel)]="counts"
-					(ionChange)="countsClicked.emit(counts)"
-					class="ion-margin-end"
-			></ion-checkbox>
-			<ion-card-title>{{ this.gradeEntry.course }}</ion-card-title>
-		</div>
+    <ion-card-header class="d-flex justify-content-between align-items-center">
+        <div class="d-flex">
+            <ion-checkbox
+                color="secondary"
+                [(ngModel)]="counts"
+                (ionChange)="countsClicked.emit(counts)"
+                class="ion-margin-end"
+            ></ion-checkbox>
+            <ion-card-title>{{ this.gradeEntry.course }}</ion-card-title>
+        </div>
 
-		<ion-buttons>
-			<ion-fab-button (click)="editClicked.emit(this.gradeEntry)"
-							class="fab-btn fab-btn--yellow" size="small">
-				<ion-icon name="create-outline"></ion-icon>
-			</ion-fab-button>
-			<ion-fab-button (click)="deleteClicked.emit(this.gradeEntry)"
-							class="fab-btn fab-btn--red" size="small">
-				<ion-icon name="trash-outline"></ion-icon>
-			</ion-fab-button>
-		</ion-buttons>
-	</ion-card-header>
+        <ion-buttons>
+            <ion-fab-button
+                (click)="editClicked.emit(this.gradeEntry)"
+                class="fab-btn fab-btn--yellow"
+                size="small"
+            >
+                <ion-icon name="create-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button
+                (click)="deleteClicked.emit(this.gradeEntry)"
+                class="fab-btn fab-btn--red"
+                size="small"
+            >
+                <ion-icon name="trash-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-buttons>
+    </ion-card-header>
 
-	<ion-card-content>
-		<ion-chip [color]="evaluateColor()" class="ion-no-margin">{{
-			this.gradeEntry.grade | number: "1.1-1"
-			}}</ion-chip>
-		<ion-chip color="medium" outline="true" class="ion-no-margin">{{
-			this.gradeEntry.semester
-			}}</ion-chip>
-		<ion-chip color="medium" outline="true" class="ion-no-margin">
-			{{ this.gradeEntry.credits }} Credits
-		</ion-chip>
-	</ion-card-content>
+    <ion-card-content>
+        <ion-chip [color]="evaluateColor()" class="ion-no-margin">{{
+            this.gradeEntry.grade | number: '1.1-1'
+        }}</ion-chip>
+        <ion-chip color="medium" outline="true" class="ion-no-margin">{{
+            this.gradeEntry.semester
+        }}</ion-chip>
+        <ion-chip color="medium" outline="true" class="ion-no-margin">
+            {{ this.gradeEntry.credits }} Credits
+        </ion-chip>
+    </ion-card-content>
 </ion-card>

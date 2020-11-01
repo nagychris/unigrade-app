@@ -1,4 +1,4 @@
 export class NumberEntryModel {
-	gpa: number = 0.0;
-	ects: number = 0;
+    gpa = 0.0;
+    ects = 0;
 }

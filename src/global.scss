@@ -10,76 +10,92 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
+@import '~@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
-@import "~@ionic/angular/css/display.css";
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
 
 /* Bootstrap */
-@import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
 ion-button {
-	color: white;
+    color: white;
 }
 
 ion-card-title {
-	font-size: 1.3rem;
+    font-size: 1.3rem;
 }
 
 .center-container {
-	height: 100%;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-ion-card{
-	box-shadow: 1px 3px 3px 0 hsla(0, 0%, 0%, 0.2);
+ion-card {
+    box-shadow: 1px 3px 3px 0 hsla(0, 0%, 0%, 0.2);
 }
 
-ion-card, ion-searchbar {
-  --ion-background-color: white;
+ion-card,
+ion-searchbar {
+    --ion-background-color: white;
+}
+
+ion-card.form-card {
+    width: 100%;
+    margin: 0;
+}
+
+ion-item-group {
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+
+    &:last-of-type {
+        margin-bottom: 10px;
+    }
 }
 
 ion-item {
-  --padding-start: 0;
-  width: 100%;
-  border-bottom: 1px solid var(--ion-color-light);
+    --padding-start: 0;
+    width: 100%;
+    border-bottom: 1px solid var(--ion-color-light);
 }
 
 /*
  - Fonts
  */
 @font-face {
-  font-family: 'Roboto';
-  src: url('./assets/fonts/Roboto-Regular.ttf');
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto-Regular.ttf');
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('./assets/fonts/Poppins-SemiBold.ttf');
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-SemiBold.ttf');
 }
 
 ion-content {
-  --ion-background-color: var(--ion-color-light);
-  font-family: Roboto, sans-serif;
+    --ion-background-color: var(--ion-color-light);
+    font-family: Roboto, sans-serif;
 }
 
 ion-header {
-  font-family: Poppins, sans-serif;
+    font-family: Poppins, sans-serif;
 }
 
 ion-label.checkbox-label {
-  font-size: 0.9rem !important;
+    font-size: 0.9rem !important;
 }

@@ -1,30 +1,29 @@
 .fab-btn {
-  --box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
-  margin: 0 0 0 8px;
+    --box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
+    margin: 0 0 0 8px;
 
-  &--white {
-	--background: white;
-  }
+    &--white {
+        --background: white;
+    }
 }
 
 ion-toolbar {
-  --background: var(--ion-color-light);
-  margin: 10px 0;
+    --background: var(--ion-color-light);
+    margin: 10px 0;
 }
 
 ion-searchbar {
-padding: 0;
-  background-color: white;
-  --box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
+    padding: 0;
+    background-color: white;
+    --box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 div.container.center-container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 div.container {
-  overflow: auto;
+    overflow: auto;
 }
-

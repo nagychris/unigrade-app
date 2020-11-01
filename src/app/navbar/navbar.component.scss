@@ -1,23 +1,25 @@
 .number-content {
-  padding-right: 20px;
-  font-size: .9rem;
+    padding-right: 20px;
+    font-size: 0.9rem;
+    font-weight: bolder;
 
-  &__text{
-	&:not(:last-child) {
-	  margin-right: 1rem;
-	}
-	&--primary {
-	  color: var(--ion-color-primary);
-	}
-  }
+    &__text {
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+
+        &--primary {
+            color: var(--ion-color-primary);
+        }
+    }
 }
 
 a {
-  &:hover {
-	text-decoration: none;
-  }
+    &:hover {
+        text-decoration: none;
+    }
 
-  &:focus {
-	text-decoration: none;
-  }
+    &:focus {
+        text-decoration: none;
+    }
 }

@@ -1,53 +1,72 @@
 <div class="container">
-	<ion-toolbar class="ion-no-padding" *ngIf="currentGrades?.length || noFilterResults">
-		<ion-searchbar
-				inputmode="text"
-				mode="md"
-				[(ngModel)]="searchTerm"
-				(ionChange)="getFilteredGrades()"
-				placeholder="Suchen"
-				class="ion-no-padding"
-		></ion-searchbar>
-		<ion-fab-button slot="end" title="Export as CSV"
-						[routerLink]="['../../create-edit']"
-						class="fab-btn fab-btn--white" size="small">
-			<ion-icon name="add-outline" color="primary"></ion-icon>
-		</ion-fab-button>
-	</ion-toolbar>
-	<ion-grid class="grade-card-container ion-no-padding" *ngIf="currentGrades?.length">
-		<ion-row>
-			<ion-col
-					*ngFor="let gradeEntry of currentGrades"
-					size="12"
-					size-md="6"
-					size-lg="4"
-			>
-				<app-grade-card
-						[gradeEntry]="gradeEntry"
-						[counts]="gradeEntry.counts"
-						(editClicked)="onNavigate(gradeEntry)"
-						(deleteClicked)="deleteGrade(gradeEntry)"
-						(countsClicked)="updateCounts(gradeEntry, $event)"
-				></app-grade-card>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
-	<div *ngIf="!currentGrades?.length && noFilterResults" class="ion-text-center ion-margin-vertical">
-		<strong>Keine Ergebnisse!</strong>
-	</div>
+    <ion-toolbar
+        class="ion-no-padding"
+        *ngIf="currentGrades?.length || noFilterResults"
+    >
+        <ion-searchbar
+            inputmode="text"
+            mode="md"
+            [(ngModel)]="searchTerm"
+            (ionChange)="getFilteredGrades()"
+            placeholder="Suchen"
+            class="ion-no-padding"
+        ></ion-searchbar>
+        <ion-fab-button
+            slot="end"
+            title="Export as CSV"
+            [routerLink]="['../../create-edit']"
+            class="fab-btn fab-btn--white"
+            size="small"
+        >
+            <ion-icon name="add-outline" color="primary"></ion-icon>
+        </ion-fab-button>
+    </ion-toolbar>
+    <ion-grid
+        class="grade-card-container ion-no-padding"
+        *ngIf="currentGrades?.length"
+    >
+        <ion-row>
+            <ion-col
+                *ngFor="let gradeEntry of currentGrades"
+                size="12"
+                size-md="6"
+                size-lg="4"
+            >
+                <app-grade-card
+                    [gradeEntry]="gradeEntry"
+                    [counts]="gradeEntry.counts"
+                    (editClicked)="onNavigate(gradeEntry)"
+                    (deleteClicked)="deleteGrade(gradeEntry)"
+                    (countsClicked)="updateCounts(gradeEntry, $event)"
+                ></app-grade-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div
+        *ngIf="!currentGrades?.length && noFilterResults"
+        class="ion-text-center ion-margin-vertical"
+    >
+        <strong>Keine Ergebnisse!</strong>
+    </div>
 </div>
-<div *ngIf="!currentGrades?.length && !noFilterResults"
-	 class="center-container container">
-	<div class="ion-margin-bottom">
-		<strong>Noch keine Noten vorhanden!</strong><br>
-		Füge Noten hinzu, um deinen Schnitt auszurechnen:
-	</div>
-	<ion-button color="secondary" [routerLink]="['../../create-edit']" class="ion-margin-bottom">
-		<ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
-		Note hinzufügen
-	</ion-button>
-	<ion-button color="secondary" [routerLink]="['../../import']">
-		<ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
-		Noten importieren
-	</ion-button>
+<div
+    *ngIf="!currentGrades?.length && !noFilterResults"
+    class="center-container container"
+>
+    <div class="ion-margin-bottom">
+        <strong>Noch keine Noten vorhanden!</strong><br />
+        Füge Noten hinzu, um deinen Schnitt auszurechnen:
+    </div>
+    <ion-button
+        color="secondary"
+        [routerLink]="['../../create-edit']"
+        class="ion-margin-bottom"
+    >
+        <ion-icon name="add-outline" class="ion-margin-end"></ion-icon>
+        Note hinzufügen
+    </ion-button>
+    <ion-button color="secondary" [routerLink]="['../../import']">
+        <ion-icon name="push-outline" class="ion-margin-end"></ion-icon>
+        Noten importieren
+    </ion-button>
 </div>

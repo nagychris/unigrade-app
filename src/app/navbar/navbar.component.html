@@ -1,18 +1,28 @@
 <ion-header [translucent]="true">
-	<ion-toolbar mode="md">
-		<a [routerLink]="['/tabs/home']">
-			<ion-title color="primary" slot="start">
-				<ion-icon name="school" color="primary" class="mr-2"></ion-icon>
-				UniGrade
-			</ion-title>
-		</a>
-		<div class="number-content" slot="end" *ngIf="numbers?.gpa !== 0.0 && numbers?.ects !== 0">
-			<ion-text class="number-content__text">Schnitt:
-				<span class="number-content__text--primary">{{numbers?.gpa | number: '1.1-1'}}</span></ion-text
-			>
-			<ion-text class="number-content__text"
-			>ECTS: <span class="number-content__text--primary">{{numbers?.ects | number}}</span></ion-text
-			>
-		</div>
-	</ion-toolbar>
+    <ion-toolbar mode="md">
+        <a [routerLink]="['/tabs/home']">
+            <ion-title color="primary" slot="start">
+                <ion-icon name="school" color="primary" class="mr-2"></ion-icon>
+                UniGrade
+            </ion-title>
+        </a>
+        <div
+            class="number-content"
+            slot="end"
+            *ngIf="numbers?.gpa !== 0.0 && numbers?.ects !== 0"
+        >
+            <ion-text class="number-content__text"
+                >Schnitt:
+                <span class="number-content__text--primary">{{
+                    numbers?.gpa | number: '1.1-1'
+                }}</span></ion-text
+            >
+            <ion-text class="number-content__text"
+                >ECTS:
+                <span class="number-content__text--primary">{{
+                    numbers?.ects | number
+                }}</span></ion-text
+            >
+        </div>
+    </ion-toolbar>
 </ion-header>
