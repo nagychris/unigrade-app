@@ -53,8 +53,8 @@ ion-card, ion-searchbar {
 }
 
 ion-item {
-  padding: 5px 0;
-  width: 85%;
+  --padding-start: 0;
+  width: 100%;
   border-bottom: 1px solid var(--ion-color-light);
 }
 
