@@ -1,7 +1,7 @@
 {
-	"name": "GradeSum",
-	"integrations": {
-		"capacitor": {}
-	},
-	"type": "angular"
+    "name": "GradeSum",
+    "integrations": {
+        "capacitor": {}
+    },
+    "type": "angular"
 }
