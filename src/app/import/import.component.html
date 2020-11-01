@@ -1,27 +1,32 @@
 <div class="center-container container">
     <ion-card class="ion-no-margin form-card">
         <ion-card-content class="ion-no-margin">
-            <ion-item-group>
-                <ion-card-title class="ion-margin-bottom"
-                    >Noten als CSV importieren</ion-card-title
-                >
-                <ion-item lines="none">
+            <ion-item-group class="ion-text-center">
+                <ion-item lines="none" class="import-item">
+                    <label for="file-upload">
+                        <ion-text>CSV-Datei wählen:</ion-text>
+                        <ion-icon name="cloud-upload-outline" color="secondary">
+                        </ion-icon>
+                    </label>
                     <input
+                        id="file-upload"
                         type="file"
                         (change)="loadFile($event)"
                         accept="text/csv"
                     />
                 </ion-item>
                 <ion-item lines="none">
-                    <ion-checkbox
-                        color="secondary"
-                        slot="start"
-                        checked="true"
-                        [(ngModel)]="keepGrades"
-                    ></ion-checkbox>
-                    <ion-label class="ion-text-wrap checkbox-label"
-                        >Bestehende Noten behalten</ion-label
-                    >
+                    <div class="checkbox-center">
+                        <ion-checkbox
+                            color="secondary"
+                            slot="start"
+                            checked="true"
+                            [(ngModel)]="keepGrades"
+                        ></ion-checkbox>
+                        <ion-label class="ion-text-wrap checkbox-label"
+                            >Bestehende Noten behalten
+                        </ion-label>
+                    </div>
                 </ion-item>
             </ion-item-group>
             <div class="ion-text-center">

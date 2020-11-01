@@ -5,6 +5,10 @@ form {
     justify-content: center;
 }
 
+ion-item {
+    border-bottom: 1px solid var(--ion-color-light);
+}
+
 ion-text {
     text-align: left;
     color: var(--ion-color-danger);

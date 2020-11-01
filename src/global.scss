@@ -71,7 +71,6 @@ ion-item-group {
 ion-item {
     --padding-start: 0;
     width: 100%;
-    border-bottom: 1px solid var(--ion-color-light);
 }
 
 /*
@@ -92,7 +91,7 @@ ion-content {
     font-family: Roboto, sans-serif;
 }
 
-ion-header {
+ion-title {
     font-family: Poppins, sans-serif;
 }
 
