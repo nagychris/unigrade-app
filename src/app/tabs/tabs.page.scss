@@ -1,3 +1,6 @@
 ion-tab-bar {
-    --background: white;
+    --background: var(
+        --ion-toolbar-background,
+        var(--ion-background-color, #fff)
+    );
 }
