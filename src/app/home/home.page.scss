@@ -3,7 +3,10 @@
     margin: 0 0 0 8px;
 
     &--white {
-        --background: white;
+        --background: var(
+            --ion-toolbar-background,
+            var(--ion-background-color, #fff)
+        );
     }
 }
 
@@ -14,7 +17,10 @@ ion-toolbar {
 
 ion-searchbar {
     padding: 0;
-    background-color: white;
+    background-color: var(
+        --ion-toolbar-background,
+        var(--ion-background-color, #fff)
+    );
     --box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
 }
 
