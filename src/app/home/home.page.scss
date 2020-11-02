@@ -16,6 +16,10 @@ ion-toolbar {
 }
 
 ion-searchbar {
+    --background: var(
+        --ion-toolbar-background,
+        var(--ion-background-color, #fff)
+    );
     padding: 0;
     background-color: var(
         --ion-toolbar-background,
