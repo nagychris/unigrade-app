@@ -34,8 +34,8 @@ export class CreateEditComponent implements OnInit {
             this.gradeEntry = {
                 course: '',
                 semester: '',
-                grade: 0,
-                credits: 0,
+                grade: null,
+                credits: null,
                 counts: true,
             };
         }

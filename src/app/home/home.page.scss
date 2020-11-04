@@ -3,10 +3,7 @@
     margin: 0 0 0 8px;
 
     &--white {
-        --background: var(
-            --ion-toolbar-background,
-            var(--ion-background-color, #fff)
-        );
+        --background: var(--ion-card-background);
     }
 }
 
@@ -16,15 +13,9 @@ ion-toolbar {
 }
 
 ion-searchbar {
-    --background: var(
-        --ion-toolbar-background,
-        var(--ion-background-color, #fff)
-    );
+    --background: var(--ion-card-background);
     padding: 0;
-    background-color: var(
-        --ion-toolbar-background,
-        var(--ion-background-color, #fff)
-    );
+    background-color: var(--ion-card-background);
     --box-shadow: 0 2px 2px 0 hsla(0, 0%, 0%, 0.2);
 }
 
