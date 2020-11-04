@@ -50,7 +50,7 @@ ion-card {
 
 ion-card,
 ion-searchbar {
-    --ion-background-color: white;
+    --ion-background-color: var(--ion-background-color);
 }
 
 ion-card.form-card {

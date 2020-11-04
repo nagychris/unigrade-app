@@ -9,7 +9,7 @@
             >
                 <ion-item-group>
                     <ion-item lines="none">
-                        <ion-label position="stacked">Kursname</ion-label>
+                        <ion-label position="floating">Kursname</ion-label>
                         <ion-input
                             type="text"
                             formControlName="course"
@@ -26,11 +26,10 @@
                 </ion-item-group>
                 <ion-item-group>
                     <ion-item lines="none">
-                        <ion-label position="stacked">Semester</ion-label>
+                        <ion-label position="floating">Semester</ion-label>
                         <ion-input
                             type="text"
                             formControlName="semester"
-                            placeholder="z.B. SS 20"
                         ></ion-input>
                     </ion-item>
                     <ion-text
@@ -41,7 +40,7 @@
                 </ion-item-group>
                 <ion-item-group>
                     <ion-item lines="none">
-                        <ion-label position="stacked">Note</ion-label>
+                        <ion-label position="floating">Note</ion-label>
                         <ion-input
                             type="number"
                             formControlName="grade"
@@ -64,7 +63,7 @@
                 </ion-item-group>
                 <ion-item-group>
                     <ion-item lines="none">
-                        <ion-label position="stacked">ECTS-Punkte</ion-label>
+                        <ion-label position="floating">ECTS-Punkte</ion-label>
                         <ion-input
                             type="number"
                             formControlName="credits"
@@ -96,7 +95,6 @@
                 </ion-item-group>
                 <div class="ion-text-center">
                     <ion-button
-                        type="submit"
                         color="secondary"
                         [disabled]="!createEditForm.valid"
                     >
