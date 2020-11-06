@@ -23,3 +23,8 @@ a {
         text-decoration: none;
     }
 }
+
+ion-title > div {
+    display: flex !important;
+    align-items: center;
+}
