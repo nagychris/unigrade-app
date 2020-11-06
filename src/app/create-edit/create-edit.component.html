@@ -3,8 +3,6 @@
         <ion-card-content class="ion-no-margin">
             <form
                 [formGroup]="createEditForm"
-                (ngSubmit)="onSubmit()"
-                (keyup.enter)="onSubmit()"
                 (keyup.escape)="cancel()"
             >
                 <ion-item-group>
@@ -95,6 +93,7 @@
                 </ion-item-group>
                 <div class="ion-text-center">
                     <ion-button
+                        (click)="onSubmit()"
                         color="secondary"
                         [disabled]="!createEditForm.valid"
                     >
