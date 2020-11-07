@@ -52,7 +52,7 @@ export class CreateEditComponent implements OnInit {
             ],
             credits: [
                 this.gradeEntry.credits,
-                [Validators.required, Validators.min(1)],
+                [Validators.required, Validators.min(1), Validators.max(30)],
             ],
             counts: [this.gradeEntry.counts],
         });

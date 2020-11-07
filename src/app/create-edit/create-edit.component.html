@@ -63,7 +63,7 @@
                             type="number"
                             formControlName="credits"
                             min="1"
-                            max="20"
+                            max="30"
                         ></ion-input>
                     </ion-item>
                     <ion-text
@@ -71,8 +71,13 @@
                     >
                         ECTS-Punkte ist ein Pflichtfeld.
                     </ion-text>
-                    <ion-text *ngIf="credits?.errors?.min && credits?.dirty">
-                        ECTS-Punkte müssen mindestens 1 sein.
+                    <ion-text
+                        *ngIf="
+                            (credits?.errors?.min || credits?.errors?.max) &&
+                            credits?.dirty
+                        "
+                    >
+                        ECTS-Punkte müssen zwischen 1 und 30 liegen.
                     </ion-text>
                 </ion-item-group>
                 <ion-item-group>
