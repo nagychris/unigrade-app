@@ -1,5 +1,5 @@
 {
-    "name": "GradeSum",
+    "name": "UniGrade",
     "integrations": {
         "capacitor": {}
     },
