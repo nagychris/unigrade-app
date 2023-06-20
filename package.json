@@ -1,8 +1,8 @@
 {
-	"name": "grade-sum",
+	"name": "unigrade",
 	"version": "1.0.0",
 	"author": "Christopher Nagy",
-	"homepage": "",
+	"homepage": "unigrade.netlify.app",
 	"scripts": {
 		"ng": "ng",
 		"start": "ionic serve --o",
